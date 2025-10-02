@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
         Vector2 movementInput = _playerInputActions.PlayerMap.Move.ReadValue<Vector2>();
         _playerMovementInput = new Vector3(movementInput.x, 0f, movementInput.y);
 
-        Debug.Log(movementInput);
+        //Debug.Log(movementInput);
     }
 
     void CalculateSpeed()
