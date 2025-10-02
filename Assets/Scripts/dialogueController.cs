@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,23 +13,19 @@ public class dialogueController : MonoBehaviour
     public GameObject textBox;
     public TMP_Text text;
     public TMP_Text nameText;
+    public TMP_Text testText;
     public bool dialogueFlag = false;
     public int dialogueCount = 0;
     public bool dialogueFinished = false;
-    private float textSpeed = 0.02f;
+    private float textSpeed = 0.005f;
+    public TextAsset dialogueText;
+    public int currentDialogue;
 
-    private Dialogue[] dialogueArray = new Dialogue[2];
+
+    private Dialogue[] dialogueArray = new Dialogue[66];
     void Start()
     {
-        dialogueArray[0] = new Dialogue();
-        dialogueArray[0].text = "This is a test of the dialogue system. I am testing if the text loads sequentially, and the text box appears.";
-        dialogueArray[0].character = "Orpheus";
-        dialogueArray[1] = new Dialogue();
-        dialogueArray[1].text = "This is the second dialogue call";
-        dialogueArray[1].character = "Eurydice";
-        char1.SetActive(false);
-        char2.SetActive(false);
-        textBox.SetActive(false);
+        LoadDialogue();
     }
 
     // Update is called once per frame
@@ -39,6 +37,16 @@ public class dialogueController : MonoBehaviour
             dialogueFinished = false;
             dialogueFlag = false;
         }
+        if (dialogueArray[dialogueCount].character == "Orpheus")
+        {
+            Debug.Log("hi");
+            char1.transform.position = new Vector3(char1.transform.position.x, 150, char1.transform.position.z);
+        }
+        else 
+        {
+            char1.transform.position = new Vector3(char1.transform.position.x, 170, char1.transform.position.z);
+        }
+        Debug.Log(dialogueArray[dialogueCount].character.Trim().Equals("Orpheus", StringComparison.OrdinalIgnoreCase));
     }
 
     void startDialogue() 
@@ -47,18 +55,63 @@ public class dialogueController : MonoBehaviour
         char2.SetActive(true);
         textBox.SetActive(true);
         nameText.text = dialogueArray[dialogueCount].character;
+        testText.text = dialogueArray[dialogueCount].portrait;
         StartCoroutine(AnimateText());
     }
 
     IEnumerator AnimateText() 
     {
+        text.text = "";
         for (int i = 0; i < dialogueArray[dialogueCount].text.Length + 1; i++) 
         {
-            text.text = dialogueArray[dialogueCount].text.Substring(0, i);
+            if (i < dialogueArray[dialogueCount].text.Length)
+            {
+                if (dialogueArray[dialogueCount].text.Substring(i, 1) == "/")
+                {
+                    text.text += "\n";
+                }
+                else
+                {
+                    text.text += dialogueArray[dialogueCount].text.Substring(i, 1);
+                }
+            }
             yield return new WaitForSeconds(textSpeed);
         }
         dialogueCount++;
         dialogueFinished = true;
+    }
+
+    void LoadDialogue() 
+    {
+        currentDialogue = 0;
+        dialogueText = Resources.Load<TextAsset>("engDialogue");
+        string[] dialogueStrings = dialogueText.text.Split("\n");
+        for (int i = 0; i < dialogueStrings.Length; i++)
+        {
+            if (i % 2 == 0)
+            {
+                dialogueArray[currentDialogue] = new Dialogue();
+                if (dialogueStrings[i].Contains("["))
+                {
+                    string[] portraitName = dialogueStrings[i].Split("[");
+                    dialogueArray[currentDialogue].character = portraitName[0];
+                    dialogueArray[currentDialogue].portrait = portraitName[1].Substring(0, portraitName[1].Length - 2);
+                }
+                else
+                {
+                    dialogueArray[currentDialogue].character = dialogueStrings[i];
+                    dialogueArray[currentDialogue].portrait = dialogueArray[currentDialogue].character;
+                }
+            }
+            else
+            {
+                dialogueArray[currentDialogue].text = dialogueStrings[i];
+                currentDialogue++;
+            }
+        }
+        char1.SetActive(false);
+        char2.SetActive(false);
+        textBox.SetActive(false);
     }
 }
 
@@ -66,4 +119,5 @@ public class Dialogue
 {
     public string text;
     public string character;
+    public string portrait;
 }
