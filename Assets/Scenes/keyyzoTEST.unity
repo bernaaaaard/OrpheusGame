@@ -577,14 +577,14 @@ MonoBehaviour:
     ScreenPosition: {x: 0, y: 0}
     DeadZone:
       Enabled: 1
-      Size: {x: 0.35, y: 0.25}
+      Size: {x: 0.1, y: 0.1}
     HardLimits:
       Enabled: 0
       Size: {x: 2, y: 0.8}
       Offset: {x: 0, y: 0}
   CenterOnActivate: 1
   TargetOffset: {x: 0, y: 0, z: 0}
-  Damping: {x: 1, y: 1, z: 1}
+  Damping: {x: 0.5, y: 0.5, z: 0.5}
   Lookahead:
     Enabled: 0
     Time: 0
@@ -678,8 +678,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1724847687}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1099458370
@@ -694,8 +693,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc4cb9b4f810c674d9535981773449f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  baseMovementSpeed: 15
-  baseMoveRotationSpeed: 360
+  maxMovementSpeed: 16
+  accelerationFactor: 6.5
+  decelerationFactor: 15
+  baseMoveRotationSpeed: 1000
+  playerModelPivot: {fileID: 1724847686}
 --- !u!143 &1099458371
 CharacterController:
   m_ObjectHideFlags: 0
@@ -721,37 +723,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &1167868305
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1167868306}
-  m_Layer: 0
-  m_Name: CameraPivot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1167868306
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1167868305}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.23911765, y: 0.3696438, z: -0.09904577, w: 0.89239913}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 30, y: 45, z: 0}
 --- !u!1 &1192012962
 GameObject:
   m_ObjectHideFlags: 0
@@ -1154,7 +1125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1724847687}
   m_Layer: 0
-  m_Name: Model
+  m_Name: PlayerModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1169,13 +1140,13 @@ Transform:
   m_GameObject: {fileID: 1724847686}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 288522021}
   - {fileID: 1794469641}
-  m_Father: {fileID: 1099458368}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1794469640
 GameObject:
@@ -1547,7 +1518,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 1972888902}
   - {fileID: 1099458368}
-  - {fileID: 1167868306}
+  - {fileID: 1724847687}
   - {fileID: 1192012965}
   - {fileID: 757413558}
   - {fileID: 2127344618}

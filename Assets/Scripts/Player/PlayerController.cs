@@ -3,22 +3,32 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
+    #region Movement
+
     [Header("Movement Settings")]
 
-    [SerializeField] float baseMovementSpeed = 5f;
+    [SerializeField] float maxMovementSpeed = 5f;
+    [SerializeField] float accelerationFactor = 5f;
+    [SerializeField] float decelerationFactor = 10f;
 
     [Space(2)]
 
     [SerializeField] float baseMoveRotationSpeed = 360f;
 
+    // private variables
+
+    float _currentSpeed;
+
+    #endregion
 
 
     #region References
 
+    [SerializeField] GameObject playerModelPivot;
+
     CharacterController _characterController;
 
     #endregion
-
 
 
     #region Input Variables
@@ -35,6 +45,7 @@ public class PlayerController : MonoBehaviour
     #endregion
 
 
+    
 
     private void Awake()
     {
@@ -57,7 +68,8 @@ public class PlayerController : MonoBehaviour
     {
         GetPlayerMovementInput();
         ProcessLookDirection();
-        ProcessPlayerMovement();
+        CalculateSpeed();
+        ProcessMovement();
     }
 
     void GetPlayerMovementInput()
@@ -68,9 +80,24 @@ public class PlayerController : MonoBehaviour
         Debug.Log(movementInput);
     }
 
-    void ProcessPlayerMovement()
+    void CalculateSpeed()
+    {
+        if (_playerMovementInput == Vector3.zero && _currentSpeed > 0f)
+        {
+            _currentSpeed -= decelerationFactor * Time.deltaTime;
+        }
+
+        else if (_playerMovementInput != Vector3.zero && _currentSpeed < maxMovementSpeed)
+        {
+            _currentSpeed += accelerationFactor * Time.deltaTime;
+        }
+
+        _currentSpeed = Mathf.Clamp(_currentSpeed, 0f, maxMovementSpeed);
+    }
+
+    void ProcessMovement()
     { 
-        Vector3 moveDirection = transform.forward * baseMovementSpeed * _playerMovementInput.magnitude * Time.deltaTime;
+        Vector3 moveDirection = transform.forward * _currentSpeed * _playerMovementInput.magnitude * Time.deltaTime;
         _characterController.Move(moveDirection);
     }
 
@@ -88,7 +115,18 @@ public class PlayerController : MonoBehaviour
         Vector3 relative = (transform.position + multipliedMatrix) - transform.position;
         Quaternion rot = Quaternion.LookRotation(relative, Vector3.up);
 
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, rot, baseMoveRotationSpeed * Time.deltaTime);
+        //transform.rotation = Quaternion.RotateTowards(transform.rotation, rot, baseMoveRotationSpeed * Time.deltaTime);
 
+
+        
+        playerModelPivot.transform.position = _characterController.transform.position;
+        transform.rotation = rot;
+        playerModelPivot.transform.rotation = Quaternion.RotateTowards(playerModelPivot.transform.rotation, rot, baseMoveRotationSpeed * Time.deltaTime);
+
+    }
+
+    void ProcessAiming()
+    { 
+        
     }
 }
