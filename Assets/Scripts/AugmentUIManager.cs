@@ -120,35 +120,35 @@ public class AugmentUIManager : MonoBehaviour
 
     private void DisablePlayerMovement()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player == null) return;
+        // GameObject player = GameObject.FindGameObjectWithTag("Player");
+        // if (player == null) return;
 
-        PlayerMovement movement = player.GetComponent<PlayerMovement>();
-        if (movement != null)
-        {
-            movement.enabled = false;
-        }
-        else
-        {
-            Debug.LogWarning("PlayerMovement component not found.");
-        }
+        // PlayerMovement movement = player.GetComponent<PlayerMovement>();
+        // if (movement != null)
+        // {
+        //     movement.enabled = false;
+        // }
+        // else
+        // {
+        //     Debug.LogWarning("PlayerMovement component not found.");
+        // }
     }
 
 
     private void EnablePlayerMovement()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player == null) return;
+        // GameObject player = GameObject.FindGameObjectWithTag("Player");
+        // if (player == null) return;
 
-        PlayerMovement movement = player.GetComponent<PlayerMovement>();
-        if (movement != null)
-        {
-            movement.enabled = true;
-        }
-        else
-        {
-            Debug.LogWarning("PlayerMovement component not found.");
-        }
+        // PlayerMovement movement = player.GetComponent<PlayerMovement>();
+        // if (movement != null)
+        // {
+        //     movement.enabled = true;
+        // }
+        // else
+        // {
+        //     Debug.LogWarning("PlayerMovement component not found.");
+        // }
     }
 
 
