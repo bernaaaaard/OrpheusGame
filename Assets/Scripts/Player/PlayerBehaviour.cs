@@ -7,10 +7,10 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void Start()
     {
-    if (GameManager.gameManager != null)
-        GameManager.gameManager._playerHealth.OnDeath += PlayerDie;
-    else
-        Debug.LogError("GameManager is missing");
+        if (GameManager.gameManager != null)
+            GameManager.gameManager._playerHealth.OnDeath += PlayerDie;
+        else
+            Debug.LogError("GameManager is missing");
     }
 
 
@@ -35,8 +35,10 @@ public class PlayerBehaviour : MonoBehaviour
     private void PlayerTakeDamage(int dmg)
     {
         GameManager.gameManager._playerHealth.DmgUnit(dmg);
-        Debug.Log("Player took damage! Current HP: " + GameManager.gameManager._playerHealth.Health);
-
+        if (GameManager.gameManager._playerHealth.Health > 0)
+        {
+            Debug.Log("Player took damage! Current HP: " + GameManager.gameManager._playerHealth.Health);
+        }
     }
 
     private void PlayerHeal(int healing)
@@ -52,4 +54,5 @@ public class PlayerBehaviour : MonoBehaviour
         GetComponent<PlayerController>().enabled = false;
         _controls.Disable();
     }
+
 }
