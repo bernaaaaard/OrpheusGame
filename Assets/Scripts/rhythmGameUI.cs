@@ -6,7 +6,8 @@ using UnityEngine.Windows;
 
 public class rhythmGameUI : MonoBehaviour
 {
-    public LineRenderer circleRenderer;
+    public LineRenderer outsideCircle;
+    public LineRenderer insideCircle;
     public bool qteFinished;
     public bool inputDetected;
     public rhythmController rhythmController;
@@ -14,8 +15,11 @@ public class rhythmGameUI : MonoBehaviour
     private float qtePercent;
     private KeyCode keyToPress;
     public TMP_Text keyText;
+    private bool qteInput = false;
+    public bool coroutineRunning = false;
     void Start()
     {
+        coroutineRunning = false;
         qteFinished = true;
         inputDetected = false;
         keyToPress = KeyCode.A;
@@ -25,19 +29,17 @@ public class rhythmGameUI : MonoBehaviour
     void Update()
     {
         waitTime = rhythmController.bps / 21f;
-        if (qteFinished)
+        if (qteFinished && !coroutineRunning)
         {
             StartCoroutine(StartQTE(keyToPress));
             qteFinished = false;
         }
         else if (!qteFinished) 
         {
-            if (gameObject.transform.name == "Outside Circle")
-            {
                 if (UnityEngine.Input.GetKeyDown(keyToPress))
                 {
                     inputDetected = true;
-                    qteFinished = true;
+                    qteInput = true;    
                     Debug.Log(qtePercent);
                     if (qtePercent <= 13 || qtePercent >= 27)
                     {
@@ -49,30 +51,34 @@ public class rhythmGameUI : MonoBehaviour
                     }
                     else 
                     {
-                        Debug.Log("QTE Fail");
+                       Debug.Log("QTE Fail");
                     }
-                    int random = Random.Range(1, 3);
-                    if (random == 1)
+                    int random = Random.Range(1, 4);
+                    switch (random) 
                     {
-                        keyToPress = KeyCode.A;
-                        keyText.text = "A";
-                    }
-                    else 
-                    {
-                        keyToPress = KeyCode.D;
-                        keyText.text = "D";
+                        case 1:
+                            keyToPress = KeyCode.A;
+                            keyText.text = "A";
+                            break;
+                        case 2:
+                            keyToPress = KeyCode.D;
+                            keyText.text = "D";
+                            break;
+                        case 3:
+                            keyToPress = KeyCode.W;
+                            keyText.text = "W";
+                            break;
                     }
                 } else 
                 {
                     inputDetected = false;
                 }
-            }
         }
     }
 
-    void DrawCircle(int steps, float radius) 
+    void DrawOutsideCircle(int steps, float radius) 
     {
-        circleRenderer.positionCount = steps + 1;
+        outsideCircle.positionCount = steps + 1;
 
         for (int i = 0; i <= steps; i++) 
         {
@@ -88,31 +94,62 @@ public class rhythmGameUI : MonoBehaviour
 
             Vector3 currentPosition = new Vector3 (x, y, 0);
 
-            circleRenderer.SetPosition(i, currentPosition);
+            outsideCircle.SetPosition(i, currentPosition);
         }
     }
-    IEnumerator StartQTE(KeyCode key) 
+
+    void QTEFinished() 
     {
-        if (!inputDetected)
+        StartCoroutine(SetQTEFinishedNextFrame());
+        coroutineRunning = false;
+    }
+
+    IEnumerator SetQTEFinishedNextFrame()
+    {
+        yield return null; // wait 1 frame
+        qteFinished = true;
+    }
+
+    void DrawInsideCircle(int steps, float radius)
+    {
+        insideCircle.positionCount = steps + 1;
+
+        for (int i = 0; i <= steps; i++)
         {
-            if (gameObject.transform.name == "Outside Circle")
+            float circumferenceProgress = (float)i / steps;
+
+            float currentRadian = circumferenceProgress * 2 * Mathf.PI;
+
+            float xScaled = Mathf.Cos(currentRadian);
+            float yScaled = Mathf.Sin(currentRadian);
+
+            float x = xScaled * radius;
+            float y = yScaled * radius;
+
+            Vector3 currentPosition = new Vector3(x, y, 0);
+
+            insideCircle.SetPosition(i, currentPosition);
+        }
+    }
+    IEnumerator StartQTE(KeyCode key)
+    {
+        coroutineRunning = true;
+        DrawInsideCircle(100, 1);
+        for (float i = 3; i > 1; i -= 0.1f)
+        {
+            qtePercent = Mathf.Round(i * 10);
+            DrawOutsideCircle(100, i);
+            if (qteInput)
             {
-                for (float i = 3; i > 1; i -= 0.1f)
-                {
-                    qtePercent = Mathf.Round(i * 10);
-                    DrawCircle(100, i);
-                    if (inputDetected)
-                    { 
-                        qteFinished = true;
-                    }
-                    yield return new WaitForSeconds(waitTime);
-                }
-                qteFinished = true;
+                qteInput = false;
+                QTEFinished();
+                yield break;
             }
-            else
-            {
-                DrawCircle(100, 1);
-            }
+            yield return new WaitForSeconds(waitTime);
+        }
+        if (!qteFinished)
+        {
+            QTEFinished();
         }
     }
 }

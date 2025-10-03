@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 279057436}
   - component: {fileID: 279057437}
   - component: {fileID: 279057438}
+  - component: {fileID: 279057439}
   m_Layer: 0
   m_Name: RhythmController
   m_TagString: Untagged
@@ -152,6 +153,7 @@ Transform:
   m_Children:
   - {fileID: 1729814750}
   - {fileID: 540706138}
+  - {fileID: 1438811616}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &279057437
@@ -267,6 +269,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &279057439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 279057434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56c2443bbaec17642b9209a2bf834081, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::rhythmGameUI
+  outsideCircle: {fileID: 540706140}
+  insideCircle: {fileID: 1729814752}
+  qteFinished: 0
+  inputDetected: 0
+  rhythmController: {fileID: 279057437}
+  waitTime: 0
+  keyText: {fileID: 749897361}
+  coroutineRunning: 0
 --- !u!1 &540706137
 GameObject:
   m_ObjectHideFlags: 0
@@ -277,7 +299,6 @@ GameObject:
   m_Component:
   - component: {fileID: 540706138}
   - component: {fileID: 540706140}
-  - component: {fileID: 540706139}
   m_Layer: 5
   m_Name: Outside Circle
   m_TagString: Untagged
@@ -304,24 +325,6 @@ RectTransform:
   m_AnchoredPosition: {x: -183.41852, y: -184.97095}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &540706139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 540706137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56c2443bbaec17642b9209a2bf834081, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::rhythmGameUI
-  circleRenderer: {fileID: 540706140}
-  qteFinished: 0
-  inputDetected: 0
-  rhythmController: {fileID: 279057437}
-  waitTime: 0
-  keyText: {fileID: 749897361}
 --- !u!120 &540706140
 LineRenderer:
   serializedVersion: 2
@@ -910,7 +913,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 749897360}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 279057436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -927,7 +930,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1729814750}
   - component: {fileID: 1729814752}
-  - component: {fileID: 1729814751}
   m_Layer: 5
   m_Name: Inside Circle
   m_TagString: Untagged
@@ -954,24 +956,6 @@ RectTransform:
   m_AnchoredPosition: {x: -183.41852, y: -184.97095}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1729814751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1729814749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56c2443bbaec17642b9209a2bf834081, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::rhythmGameUI
-  circleRenderer: {fileID: 1729814752}
-  qteFinished: 0
-  inputDetected: 0
-  rhythmController: {fileID: 279057437}
-  waitTime: 0
-  keyText: {fileID: 749897361}
 --- !u!120 &1729814752
 LineRenderer:
   serializedVersion: 2
@@ -1089,5 +1073,4 @@ SceneRoots:
   - {fileID: 1432702244}
   - {fileID: 597277109}
   - {fileID: 279057436}
-  - {fileID: 1438811616}
   - {fileID: 591971618}
