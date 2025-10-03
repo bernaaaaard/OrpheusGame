@@ -1,8 +1,23 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
+
+    #region References
+
+    [Header("References")]
+
+    [SerializeField] GameObject playerModelPivot;
+
+    CharacterController _characterController;
+
+    #endregion
+
+    [Space(5)]
+
     #region Movement
 
     [Header("Movement Settings")]
@@ -21,14 +36,35 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
+    [Space(5)]
 
-    #region References
+    #region Aiming
 
-    [SerializeField] GameObject playerModelPivot;
+    [Header("Aiming Settings")]
 
-    CharacterController _characterController;
+    [SerializeField] GameObject pointerObj;
+    [SerializeField] Transform aimingSpawnPosition;
+
+    [Space(2)]
+
+    [SerializeField] GameObject objectPosOne;
+    [SerializeField] GameObject objectPosTwo;
+    [SerializeField] GameObject objectPosThree;
+
+
+    // private variables
+
+    Vector3 _collidedTargetPoint;
+    Vector3 _screenPos;
+    Vector3 _worldPos;
+    Vector3 _requiredHitPoint;
+
+    LayerMask _playerLayer;
 
     #endregion
+
+
+   
 
 
     #region Input Variables
@@ -41,6 +77,7 @@ public class PlayerController : MonoBehaviour
     // Private variables
 
     Vector3 _playerMovementInput;
+    Vector3 _aimingInput;
 
     #endregion
 
@@ -67,9 +104,11 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         GetPlayerMovementInput();
+        GetPlayerAimingInput();
         ProcessLookDirection();
         CalculateSpeed();
         ProcessMovement();
+        ProcessAiming();
     }
 
     void GetPlayerMovementInput()
@@ -125,8 +164,95 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    void GetPlayerAimingInput()
+    {
+        Vector2 aimingInput = _playerInputActions.PlayerMap.Aim.ReadValue<Vector2>();
+        _aimingInput = new Vector3(aimingInput.x, 0.0f, aimingInput.y);
+
+        Debug.Log("Mouse / Aim Pos: " + aimingInput);
+    }
+
     void ProcessAiming()
-    { 
-        
+    {
+        //Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+
+        //Ray cameraRay = Camera.main.ScreenPointToRay(_aimingInput);
+
+        //float hitDist = 0.0f;
+
+        //if (groundPlane.Raycast(cameraRay, out hitDist))
+        //{ 
+        //    Vector3 targetPoint = cameraRay.GetPoint(hitDist);
+        //    _collidedTargetPoint = targetPoint;
+
+        //    Debug.DrawLine(cameraRay.origin, targetPoint, Color.red);
+
+        //    _screenPos = new Vector3(_aimingInput.x, _aimingInput.y, Camera.main.farClipPlane);
+
+        //    _worldPos = Camera.main.ScreenToWorldPoint(_screenPos);
+
+        //    Vector3 finalAimingPoint = new Vector3(targetPoint.x, targetPoint.y, targetPoint.z);
+
+        //    pointerObj.transform.position = finalAimingPoint;
+        //}
+
+
+        // --------- DIFFERENT ATTEMPT TO SOLVE ISSUE ---------------
+
+        Vector2 aimingInput = _playerInputActions.PlayerMap.Aim.ReadValue<Vector2>();
+        Vector3 mousePos = Mouse.current.position.ReadValue();
+
+        Ray cameraRay = Camera.main.ScreenPointToRay(mousePos);
+
+        RaycastHit hit;
+
+        if (Physics.Raycast(cameraRay, out hit, Mathf.Infinity, -_playerLayer))
+        {
+            // Length of the triangle
+
+            Vector3 playerHeight = new Vector3(hit.point.x, this.transform.position.y, hit.point.z);
+            Debug.Log("Player Height Pos: " + playerHeight);
+
+            Vector3 hitPoint = new Vector3(hit.point.x, hit.point.y, hit.point.z);
+            Debug.Log("Hit Point Pos: " + hitPoint);
+
+            float length = Vector3.Distance(playerHeight, hitPoint);
+
+            // Length of the hypotenuse
+
+            var deg = 30;
+
+            var rad = deg * Mathf.Deg2Rad;
+
+            float hypotenuse = length / (Mathf.Sin(rad));
+
+            float distanceFromCamera = hit.distance;
+
+            // Changes based on player height
+
+            if (this.transform.position.y > hit.point.y)
+            {
+                _requiredHitPoint = cameraRay.GetPoint(distanceFromCamera - hypotenuse);
+            }
+
+            else if (this.transform.position.y < hit.point.y)
+            {
+                _requiredHitPoint = cameraRay.GetPoint(distanceFromCamera + hypotenuse);
+            }
+
+            else
+            {
+                _requiredHitPoint = cameraRay.GetPoint(distanceFromCamera);
+            }
+
+            objectPosOne.transform.position = hitPoint;
+            objectPosTwo.transform.position = playerHeight;
+            objectPosThree.transform.position = _requiredHitPoint;
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(_requiredHitPoint, 3.0f);
     }
 }
