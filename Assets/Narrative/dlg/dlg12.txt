@@ -3,7 +3,11 @@ Orpheus
 Hrm35
 Orpheus. Are you ok? You've been quieter than usual; you used to be so full of pep and song.
 Orpheus
-Yeah…sorry, I'm fine. It just occurred to me….
+Yeah… sorry, I'm fine. It just occurred to me….
+Orpheus
+...
+Hrm35
+...
 Orpheus
 ...
 Hrm35
@@ -26,4 +30,5 @@ Hrm35
 Don't do it!!
 Orpheus
 If it leads to death, it will be worth it if it just leads to her
+
 
