@@ -1,0 +1,13 @@
+Orpheus
+Hello.
+Hrm35
+Did you find her?
+Orpheus
+I managed to track her IP address through the DNS,/but I haven't been able to track her any further than this host router
+Orpheus
+It seems to be running a Protocol Relay: Subterranean Processing & Hosting Network,
+Orpheus
+But I'm having a hard time validating the certificates.
+Hrm35
+“I told you, those security certificates are tough nuts to crack,/especially on those ancient PR:SPHN’s
+Orpheus

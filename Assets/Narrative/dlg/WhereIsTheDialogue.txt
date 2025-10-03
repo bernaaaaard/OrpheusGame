@@ -1,0 +1,1 @@
+The dialogue is in the assets/resources/dialogue folder, it needs to be there so the program can read the files at runtime

@@ -19,6 +19,7 @@ public class dialogueController : MonoBehaviour
     private float textSpeed = 0.005f;
     public TextAsset dialogueText;
     public int currentDialogue;
+    public int currentConversation;
 
     public Color char1norm;
     public Color char2norm;
@@ -33,11 +34,11 @@ public class dialogueController : MonoBehaviour
     private Dialogue[] dialogueArray = new Dialogue[66];
     void Start()
     {
-        LoadDialogue();
+        LoadDialogue(0);
         dialogueFinished = true;
         p1image = char1.gameObject.GetComponent<UnityEngine.UI.Image>();
         p2image = char2.gameObject.GetComponent<UnityEngine.UI.Image>();
-        Debug.Log(textBox.transform.position);
+        Debug.Log(currentDialogue);
     }
 
     // Update is called once per frame
@@ -53,7 +54,11 @@ public class dialogueController : MonoBehaviour
         if (dialogueFlag && dialogueFinished)
         {
             startDialogue();
-            dialogueFinished = false;
+            if (dialogueCount != 0)
+            {
+                dialogueFinished = false;
+            }
+            Debug.Log("dialogue finished = false;");
             dialogueFlag = false;
         }
     }
@@ -63,19 +68,36 @@ public class dialogueController : MonoBehaviour
         char1.SetActive(true);
         char2.SetActive(true);
         textBox.SetActive(true);
-        nameText.text = dialogueArray[dialogueCount].character;
-        StartCoroutine(AnimateText(dialogueCount));
-        dialogueCount++;
-        if (dialogueCount > 0)
+        if (dialogueCount < currentDialogue)
         {
+            nameText.text = dialogueArray[dialogueCount].character;
+            int dialogueIndex = dialogueCount;
+            StartCoroutine(AnimateText(dialogueIndex));
+            dialogueCount++;
+            if (dialogueCount > 0)
+            {
 
-            if (dialogueArray[dialogueCount - 1].character.Trim() == "Orpheus")
-            {
-                npcPortraits.setPortrait("Char_Hermes_shaded");
+                if (dialogueArray[dialogueCount - 1].character.Trim() == "Orpheus")
+                {
+                    npcPortraits.setPortrait("Char_Hermes_shaded");
+                }
+                else
+                {
+                    npcPortraits.setPortrait("Char_Hermes");
+                }
             }
-            else
+        }
+        else 
+        {
+            Debug.Log("no more dialogue");
+            dialogueCount = 0;
+            dialogueFinished = true;
+            Debug.Log("Dialogue finished = true"); 
+            dialogueFlag = false;
+            if (currentConversation < 12)
             {
-                npcPortraits.setPortrait("Char_Hermes");
+                currentConversation++;
+                LoadDialogue(currentConversation);
             }
         }
     }
@@ -83,7 +105,7 @@ public class dialogueController : MonoBehaviour
     IEnumerator AnimateText(int dialogueNum) 
     {
         text.text = "";
-        for (int i = 0; i < dialogueArray[dialogueNum].text.Length + 1; i++) 
+        for (int i = 0; i < dialogueArray[dialogueNum].text.Length + 1; i++)
         {
             if (i < dialogueArray[dialogueNum].text.Length)
             {
@@ -101,10 +123,10 @@ public class dialogueController : MonoBehaviour
         dialogueFinished = true;
     }
 
-    void LoadDialogue() 
+    void LoadDialogue(int dialogueNum) 
     {
         currentDialogue = 0;
-        dialogueText = Resources.Load<TextAsset>("engDialogue");
+        dialogueText = Resources.Load<TextAsset>("dialogue/dlg" + dialogueNum);
         string[] dialogueStrings = dialogueText.text.Split("\n");
         for (int i = 0; i < dialogueStrings.Length; i++)
         {
@@ -116,7 +138,6 @@ public class dialogueController : MonoBehaviour
                     string[] portraitName = dialogueStrings[i].Split("[");
                     dialogueArray[currentDialogue].character = portraitName[0];
                     dialogueArray[currentDialogue].portrait = portraitName[1].Substring(0, portraitName[1].Length - 2);
-                    dialogueArray[currentDialogue].cutscene = true;
                 }
                 else
                 {
@@ -141,5 +162,4 @@ public class Dialogue
     public string text;
     public string character;
     public string portrait;
-    public bool cutscene;
 }

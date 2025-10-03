@@ -890,6 +890,7 @@ MonoBehaviour:
   dialogueFinished: 0
   dialogueText: {fileID: 0}
   currentDialogue: 0
+  currentConversation: 0
   char1norm: {r: 0.76470596, g: 0.16862746, b: 0.16862746, a: 1}
   char2norm: {r: 0.46274513, g: 0.7019608, b: 0.83921576, a: 1}
   char1dark: {r: 0.57254905, g: 0.2509804, b: 0.25882354, a: 1}
@@ -909,7 +910,8 @@ Transform:
   m_LocalPosition: {x: 313.89145, y: 134.83963, z: 567.29974}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1806446806}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1806446802
@@ -1009,7 +1011,7 @@ RectTransform:
   - {fileID: 1399687617}
   - {fileID: 1305808721}
   - {fileID: 1369224049}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1744603341}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1159,5 +1161,4 @@ SceneRoots:
   - {fileID: 627725383}
   - {fileID: 757983575}
   - {fileID: 1744603341}
-  - {fileID: 1806446806}
   - {fileID: 1269477766}

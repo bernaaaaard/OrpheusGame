@@ -9,12 +9,11 @@ public class npcPortraits : MonoBehaviour
         {
             Texture2D portraitSprite = Resources.Load<Texture2D>(portrait);
             gameObject.GetComponent<UnityEngine.UI.Image>().sprite = Sprite.Create(portraitSprite, new Rect(0, 0, portraitSprite.width, portraitSprite.height), Vector2.one * 0.5f);
-            Debug.Log("found it");
             gameObject.transform.localScale = new Vector2(2, 2);
         }
         else 
         {
-            Debug.Log("nope cant find it");
+
         }
     }
 }
