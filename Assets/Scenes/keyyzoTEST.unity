@@ -673,7 +673,7 @@ MonoBehaviour:
       Offset: {x: 0, y: 0}
   CenterOnActivate: 1
   TargetOffset: {x: 0, y: 0, z: 0}
-  Damping: {x: 0.5, y: 0.5, z: 0.5}
+  Damping: {x: 0.3, y: 0.3, z: 0.3}
   Lookahead:
     Enabled: 0
     Time: 0
@@ -783,15 +783,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   playerModelPivot: {fileID: 1724847686}
-  maxMovementSpeed: 16
-  accelerationFactor: 6.5
+  maxMovementSpeed: 12
+  accelerationFactor: 8
   decelerationFactor: 15
   baseMoveRotationSpeed: 1000
+  maxGravitySpeed: -10
   pointerObj: {fileID: 0}
   aimingSpawnPosition: {fileID: 0}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 128
   objectPosOne: {fileID: 1245602673}
   objectPosTwo: {fileID: 175829114}
   objectPosThree: {fileID: 1407402544}
+  showDebugPosition: 1
+  ignoreHeight: 1
 --- !u!143 &1099458371
 CharacterController:
   m_ObjectHideFlags: 0
@@ -814,7 +820,7 @@ CharacterController:
   m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
-  m_SkinWidth: 0.08
+  m_SkinWidth: 0.001
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1192012962
@@ -1199,7 +1205,7 @@ GameObject:
   - component: {fileID: 1340965801}
   - component: {fileID: 1340965800}
   - component: {fileID: 1340965799}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
@@ -30,6 +31,10 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] float baseMoveRotationSpeed = 360f;
 
+    [Space(2)]
+
+    [SerializeField] float maxGravitySpeed = -10.0f;
+
     // private variables
 
     float _currentSpeed;
@@ -40,16 +45,25 @@ public class PlayerController : MonoBehaviour
 
     #region Aiming
 
-    [Header("Aiming Settings")]
+    [Header("Aiming References")]
 
     [SerializeField] GameObject pointerObj;
     [SerializeField] Transform aimingSpawnPosition;
+    [SerializeField] LayerMask groundMask;
 
     [Space(2)]
+
+    [Header("Aiming Debug References / Options")]
 
     [SerializeField] GameObject objectPosOne;
     [SerializeField] GameObject objectPosTwo;
     [SerializeField] GameObject objectPosThree;
+
+    [Space(2)]
+
+    [SerializeField] bool showDebugPosition = true;
+    [SerializeField] bool ignoreHeight = true;
+    
 
 
     // private variables
@@ -109,6 +123,8 @@ public class PlayerController : MonoBehaviour
         CalculateSpeed();
         ProcessMovement();
         ProcessAiming();
+        //MouseAim();
+        HandleAiming();
     }
 
     void GetPlayerMovementInput()
@@ -160,8 +176,16 @@ public class PlayerController : MonoBehaviour
         
         playerModelPivot.transform.position = _characterController.transform.position;
         transform.rotation = rot;
-        playerModelPivot.transform.rotation = Quaternion.RotateTowards(playerModelPivot.transform.rotation, rot, baseMoveRotationSpeed * Time.deltaTime);
+        //playerModelPivot.transform.rotation = Quaternion.RotateTowards(playerModelPivot.transform.rotation, rot, baseMoveRotationSpeed * Time.deltaTime);
 
+    }
+
+    // Created function incase it is required at some point
+
+    Vector3 HandleGravity()
+    {
+        Vector3 gravityVec = new Vector3(0.0f, maxGravitySpeed, 0.0f);
+        return gravityVec;
     }
 
     void GetPlayerAimingInput()
@@ -206,7 +230,7 @@ public class PlayerController : MonoBehaviour
 
         RaycastHit hit;
 
-        if (Physics.Raycast(cameraRay, out hit, Mathf.Infinity, -_playerLayer))
+        if (Physics.Raycast(cameraRay, out hit, Mathf.Infinity))
         {
             // Length of the triangle
 
@@ -245,14 +269,76 @@ public class PlayerController : MonoBehaviour
                 _requiredHitPoint = cameraRay.GetPoint(distanceFromCamera);
             }
 
-            objectPosOne.transform.position = hitPoint;
-            objectPosTwo.transform.position = playerHeight;
-            objectPosThree.transform.position = _requiredHitPoint;
+            if (showDebugPosition)
+            {
+                objectPosOne.SetActive(true);
+                objectPosTwo.SetActive(true);
+                objectPosThree.SetActive(true);
+
+                objectPosOne.transform.position = hitPoint;
+                objectPosTwo.transform.position = playerHeight;
+                objectPosThree.transform.position = _requiredHitPoint;
+            }
+
+            else
+            {
+                objectPosOne.SetActive(false);
+                objectPosTwo.SetActive(false);
+                objectPosThree.SetActive(false);
+            }
+
+
         }
     }
 
-    private void OnDrawGizmos()
+    
+
+    (bool success, Vector3 position) GetMousePosition()
     {
-        Gizmos.DrawWireSphere(_requiredHitPoint, 3.0f);
+        Vector2 aimingInput = _playerInputActions.PlayerMap.Aim.ReadValue<Vector2>();
+        Ray ray = Camera.main.ScreenPointToRay(aimingInput);
+
+        RaycastHit hitInfo;
+
+        if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, groundMask))
+        {
+            Debug.DrawLine(ray.origin, hitInfo.point);
+            return (success: true, position: hitInfo.point);
+        }
+
+        else
+        {
+            Debug.DrawLine(ray.origin, hitInfo.point);
+            return (success: false, position : Vector3.zero);
+        }
+
+        
+    } // UNUSED METHOD - WAS TESTING DIFFERENT WAYS TO ACHIEVE THE SAME TASK
+
+    void MouseAim()
+    { 
+        var (success, position) = GetMousePosition();
+        if (success)
+        {
+            Vector3 direction = position - transform.position;
+
+            direction.y = 0f;
+
+            playerModelPivot.transform.forward = direction;
+        }
+    } // SAME AS ABOVE - HAVE A SIMILAR VERSION BELOW THAT IS USED
+
+    void HandleAiming()
+    {
+        Vector3 direction = _requiredHitPoint - transform.position;
+
+        if (ignoreHeight)
+        {
+            direction.y = 0f;
+        }
+
+        playerModelPivot.transform.forward = direction;
     }
+
+    
 }
