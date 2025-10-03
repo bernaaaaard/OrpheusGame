@@ -783,9 +783,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   playerModelPivot: {fileID: 1724847686}
-  maxMovementSpeed: 12
-  accelerationFactor: 8
-  decelerationFactor: 15
+  maxMovementSpeed: 8
+  accelerationFactor: 6
+  decelerationFactor: 12
   baseMoveRotationSpeed: 1000
   maxGravitySpeed: -10
   pointerObj: {fileID: 0}
@@ -798,6 +798,9 @@ MonoBehaviour:
   objectPosThree: {fileID: 1407402544}
   showDebugPosition: 1
   ignoreHeight: 1
+  maxDashSpeed: 25
+  dashLength: 0.25
+  dashCooldownTimer: 3
 --- !u!143 &1099458371
 CharacterController:
   m_ObjectHideFlags: 0

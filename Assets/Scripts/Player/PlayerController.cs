@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -77,8 +78,23 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
+    [Space(5)]
 
-   
+    #region Dashing
+
+    [Header("Dashing Settings")]
+
+    [SerializeField] float maxDashSpeed = 20.0f;
+    [Range(0.1f, 1.0f),SerializeField] float dashLength = 0.5f;
+    [SerializeField] float dashCooldownTimer = 2.0f;
+
+    // private variables
+
+    bool _isDashing = false;
+    bool _canDash = true;
+
+    #endregion
+
 
 
     #region Input Variables
@@ -92,6 +108,7 @@ public class PlayerController : MonoBehaviour
 
     Vector3 _playerMovementInput;
     Vector3 _aimingInput;
+    bool _dashInput;
 
     #endregion
 
@@ -114,18 +131,33 @@ public class PlayerController : MonoBehaviour
         _playerInputActions.PlayerMap.Disable();
     }
 
+    private void Start()
+    {
+        _canDash = true;
+    }
 
     private void Update()
     {
+        // Input Functions
+
         GetPlayerMovementInput();
         GetPlayerAimingInput();
+        GetDashingInput();
+
+        // Movement / Aiming
         ProcessLookDirection();
         CalculateSpeed();
         ProcessMovement();
         ProcessAiming();
         //MouseAim();
         HandleAiming();
+
+        // Dashing
+
+        ProcessDash();
     }
+
+    #region Movement Functions
 
     void GetPlayerMovementInput()
     {
@@ -151,7 +183,14 @@ public class PlayerController : MonoBehaviour
     }
 
     void ProcessMovement()
-    { 
+    {
+        if (_isDashing)
+        {
+            _characterController.Move(transform.forward * maxDashSpeed * _playerMovementInput.magnitude * Time.deltaTime);
+
+            return;
+        }
+
         Vector3 moveDirection = transform.forward * _currentSpeed * _playerMovementInput.magnitude * Time.deltaTime;
         _characterController.Move(moveDirection);
     }
@@ -188,10 +227,14 @@ public class PlayerController : MonoBehaviour
         return gravityVec;
     }
 
+    #endregion
+
+    #region Aiming Functions
+
     void GetPlayerAimingInput()
     {
         Vector2 aimingInput = _playerInputActions.PlayerMap.Aim.ReadValue<Vector2>();
-        _aimingInput = new Vector3(aimingInput.x, 0.0f, aimingInput.y);
+        _aimingInput = aimingInput;
 
         Debug.Log("Mouse / Aim Pos: " + aimingInput);
     }
@@ -340,5 +383,36 @@ public class PlayerController : MonoBehaviour
         playerModelPivot.transform.forward = direction;
     }
 
-    
+    #endregion
+
+    #region Dash Functions
+
+    void GetDashingInput()
+    {
+        bool dashInput = _playerInputActions.PlayerMap.Dash.IsPressed();
+        _dashInput = dashInput;
+
+        Debug.Log("Player has dashed: " + dashInput);
+    }
+
+    void ProcessDash()
+    {
+        if (_dashInput && _canDash && _currentSpeed > 0f)
+        {
+            StartCoroutine(DashRoutine());
+        }
+    }
+
+    IEnumerator DashRoutine()
+    { 
+        _canDash = false;
+        _isDashing = true;
+        yield return new WaitForSeconds(dashLength);
+        _isDashing = false;
+        yield return new WaitForSeconds(dashCooldownTimer);
+        _canDash = true;
+        
+    }
+
+    #endregion
 }
