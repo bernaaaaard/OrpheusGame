@@ -13,7 +13,6 @@ public class dialogueController : MonoBehaviour
     public GameObject textBox;
     public TMP_Text text;
     public TMP_Text nameText;
-    public TMP_Text testText;
     public bool dialogueFlag = false;
     public int dialogueCount = 0;
     public bool dialogueFinished = false;
@@ -21,32 +20,42 @@ public class dialogueController : MonoBehaviour
     public TextAsset dialogueText;
     public int currentDialogue;
 
+    public Color char1norm;
+    public Color char2norm;
+    public Color char1dark;
+    public Color char2dark;
+
+    public UnityEngine.UI.Image p1image;
+    public UnityEngine.UI.Image p2image;
+
+    public npcPortraits npcPortraits;
 
     private Dialogue[] dialogueArray = new Dialogue[66];
     void Start()
     {
         LoadDialogue();
+        dialogueFinished = true;
+        p1image = char1.gameObject.GetComponent<UnityEngine.UI.Image>();
+        p2image = char2.gameObject.GetComponent<UnityEngine.UI.Image>();
+        Debug.Log(textBox.transform.position);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (dialogueFlag) 
+        if (Input.GetKeyDown(KeyCode.W)) 
+        {
+            if (dialogueFinished)
+            {
+                dialogueFlag = true;
+            }
+        }
+        if (dialogueFlag && dialogueFinished)
         {
             startDialogue();
             dialogueFinished = false;
             dialogueFlag = false;
         }
-        if (dialogueArray[dialogueCount].character == "Orpheus")
-        {
-            Debug.Log("hi");
-            char1.transform.position = new Vector3(char1.transform.position.x, 150, char1.transform.position.z);
-        }
-        else 
-        {
-            char1.transform.position = new Vector3(char1.transform.position.x, 170, char1.transform.position.z);
-        }
-        Debug.Log(dialogueArray[dialogueCount].character.Trim().Equals("Orpheus", StringComparison.OrdinalIgnoreCase));
     }
 
     void startDialogue() 
@@ -55,29 +64,40 @@ public class dialogueController : MonoBehaviour
         char2.SetActive(true);
         textBox.SetActive(true);
         nameText.text = dialogueArray[dialogueCount].character;
-        testText.text = dialogueArray[dialogueCount].portrait;
-        StartCoroutine(AnimateText());
+        StartCoroutine(AnimateText(dialogueCount));
+        dialogueCount++;
+        if (dialogueCount > 0)
+        {
+
+            if (dialogueArray[dialogueCount - 1].character.Trim() == "Orpheus")
+            {
+                npcPortraits.setPortrait("Char_Hermes_shaded");
+            }
+            else
+            {
+                npcPortraits.setPortrait("Char_Hermes");
+            }
+        }
     }
 
-    IEnumerator AnimateText() 
+    IEnumerator AnimateText(int dialogueNum) 
     {
         text.text = "";
-        for (int i = 0; i < dialogueArray[dialogueCount].text.Length + 1; i++) 
+        for (int i = 0; i < dialogueArray[dialogueNum].text.Length + 1; i++) 
         {
-            if (i < dialogueArray[dialogueCount].text.Length)
+            if (i < dialogueArray[dialogueNum].text.Length)
             {
-                if (dialogueArray[dialogueCount].text.Substring(i, 1) == "/")
+                if (dialogueArray[dialogueNum].text.Substring(i, 1) == "/")
                 {
                     text.text += "\n";
                 }
                 else
                 {
-                    text.text += dialogueArray[dialogueCount].text.Substring(i, 1);
+                    text.text += dialogueArray[dialogueNum].text.Substring(i, 1);
                 }
             }
             yield return new WaitForSeconds(textSpeed);
         }
-        dialogueCount++;
         dialogueFinished = true;
     }
 
@@ -96,6 +116,7 @@ public class dialogueController : MonoBehaviour
                     string[] portraitName = dialogueStrings[i].Split("[");
                     dialogueArray[currentDialogue].character = portraitName[0];
                     dialogueArray[currentDialogue].portrait = portraitName[1].Substring(0, portraitName[1].Length - 2);
+                    dialogueArray[currentDialogue].cutscene = true;
                 }
                 else
                 {
@@ -120,4 +141,5 @@ public class Dialogue
     public string text;
     public string character;
     public string portrait;
+    public bool cutscene;
 }
