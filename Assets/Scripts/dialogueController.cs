@@ -94,7 +94,7 @@ public class dialogueController : MonoBehaviour
             dialogueFinished = true;
             Debug.Log("Dialogue finished = true"); 
             dialogueFlag = false;
-            if (currentConversation < 12)
+            if (currentConversation < 13)
             {
                 currentConversation++;
                 LoadDialogue(currentConversation);
