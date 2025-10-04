@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -104,6 +105,7 @@ public class PlayerController : MonoBehaviour
     [Header("Firing References")]
 
     [SerializeField] Transform bulletSpawnPosition;
+    [SerializeField] LineRenderer lineRenderer;
 
     [Space(2)]
 
@@ -112,12 +114,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int bulletDamage = 1;
     [SerializeField] float fireRate = 0.2f;
 
+    [Space(2)]
+
+    [SerializeField] float laserDuration = 0.1f;
+    [SerializeField] float laserVisualRange = 30f;
+    
+
     // private variables
 
     bool _isFiring = false;
     bool _canFire = false;
 
     Vector3 _firingDirection;
+
 
     #endregion
 
@@ -161,7 +170,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _canDash = true;
-        _canFire = false;
+        _canFire = true;
     }
 
     private void Update()
@@ -205,6 +214,11 @@ public class PlayerController : MonoBehaviour
 
     void CalculateSpeed()
     {
+        if (_fireInput)
+        {
+            _currentSpeed = 0f;
+        }
+
         if (_playerMovementInput == Vector3.zero && _currentSpeed > 0f)
         {
             _currentSpeed -= decelerationFactor * Time.deltaTime;
@@ -217,15 +231,7 @@ public class PlayerController : MonoBehaviour
 
         _currentSpeed = Mathf.Clamp(_currentSpeed, 0f, maxMovementSpeed);
 
-        if (_currentSpeed == 0f && _playerMovementInput == Vector3.zero)
-        {
-            _canFire = true;
-        }
-
-        else
-        { 
-            _canFire = false;
-        }
+        
     }
 
     void ProcessMovement()
@@ -448,6 +454,7 @@ public class PlayerController : MonoBehaviour
 
         if (ignoreHeight)
         {
+
             direction.y = 0f;
         }
 
@@ -468,37 +475,54 @@ public class PlayerController : MonoBehaviour
 
     void ProcessFiring()
     {
-        Ray firingRay = new Ray(bulletSpawnPosition.transform.position, bulletSpawnPosition.transform.forward);
+        Ray firingRay = new Ray(bulletSpawnPosition.transform.position, playerModelPivot.transform.forward);
 
         RaycastHit fireHit;
 
         Debug.DrawRay(firingRay.origin, firingRay.direction * 100f, Color.darkRed);
+
         
-        if (Physics.Raycast(firingRay, out fireHit, Mathf.Infinity))
+        
+
+        if (_fireInput && _canFire)
         {
-            //Debug.Log(fireHit.transform.gameObject.name);
+            // TODO: Add the damaging mechanic when firing and hitting a valid target
 
+            lineRenderer.SetPosition(0, firingRay.origin);
 
+            StartCoroutine(FiringRoutine());
 
-            if (_fireInput && _canFire)
+            
+
+            if (Physics.Raycast(firingRay, out fireHit, laserVisualRange))
             {
-                // TODO: Add the damaging mechanic when firing and hitting a valid target
+                //Debug.Log(fireHit.transform.gameObject.name);
 
-                StartCoroutine(FiringRoutine());
+                Debug.Log("Hit " + fireHit.collider.name);
+
+                lineRenderer.SetPosition(1, fireHit.point);
+
             }
 
+            else
+            {
+                lineRenderer.SetPosition(1, firingRay.origin + (firingRay.direction * laserVisualRange));
+            }
         }
+
+        
     }
 
     IEnumerator FiringRoutine()
     {
         _canFire = false;
 
-        _isFiring = true;
+        lineRenderer.enabled = true;
         Debug.Log("Firing shot at something!");
-        _isFiring = false;
+        
         yield return new WaitForSeconds(fireRate);
 
+        lineRenderer.enabled = false;
         _canFire = true;
     }
 
