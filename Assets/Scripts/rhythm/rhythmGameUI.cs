@@ -17,21 +17,29 @@ public class rhythmGameUI : MonoBehaviour
     public TMP_Text keyText;
     private bool qteInput = false;
     public bool coroutineRunning = false;
+    public bool qteFlag = false;
+    public int qteCount;
     void Start()
     {
         coroutineRunning = false;
         qteFinished = true;
         inputDetected = false;
         keyToPress = KeyCode.A;
+        qteFlag = false;
+        qteCount = 0;
+        keyText.gameObject.SetActive(false);
+        insideCircle.gameObject.SetActive(false);
+        outsideCircle.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
         waitTime = rhythmController.bps / 21f;
-        if (qteFinished && !coroutineRunning)
+        if (qteFinished && !coroutineRunning && qteFlag && qteCount < 3)
         {
             StartCoroutine(StartQTE(keyToPress));
+            keyText.gameObject.SetActive(true);
             qteFinished = false;
         }
         else if (!qteFinished) 
@@ -69,6 +77,7 @@ public class rhythmGameUI : MonoBehaviour
                             keyText.text = "W";
                             break;
                     }
+                qteCount++;
                 } else 
                 {
                     inputDetected = false;
@@ -133,6 +142,8 @@ public class rhythmGameUI : MonoBehaviour
     }
     IEnumerator StartQTE(KeyCode key)
     {
+        insideCircle.gameObject.SetActive(true);
+        outsideCircle.gameObject.SetActive(true);
         coroutineRunning = true;
         DrawInsideCircle(100, 1);
         for (float i = 3; i > 1; i -= 0.1f)

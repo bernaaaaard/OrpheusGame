@@ -123,9 +123,6 @@ public partial class @OrpheusControls: IInputActionCollection2, IDisposable
                     ""name"": ""Dash"",
                     ""type"": ""Button"",
                     ""id"": ""de36e26b-16f6-4198-ac18-001ef8fabf6a"",
-                    ""name"": ""Heal"",
-                    ""type"": ""Button"",
-                    ""id"": ""d32678f5-8033-4df8-9909-983df63ae54f"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -249,12 +246,6 @@ public partial class @OrpheusControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Attack"",
-                    ""id"": ""d8291c99-e08a-4136-8253-70e9e51ecd86"",
-                    ""path"": ""<Keyboard>/r"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Heal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -277,12 +268,6 @@ public partial class @OrpheusControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Dash"",
-                    ""id"": ""0716c9cf-0182-422a-868b-f2cd186a6b93"",
-                    ""path"": ""<Keyboard>/f"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Damage"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -325,7 +310,6 @@ public partial class @OrpheusControls: IInputActionCollection2, IDisposable
         m_PlayerMap_Aim = m_PlayerMap.FindAction("Aim", throwIfNotFound: true);
         m_PlayerMap_Attack = m_PlayerMap.FindAction("Attack", throwIfNotFound: true);
         m_PlayerMap_Dash = m_PlayerMap.FindAction("Dash", throwIfNotFound: true);
-        m_PlayerMap_Heal = m_PlayerMap.FindAction("Heal", throwIfNotFound: true);
         m_PlayerMap_Damage = m_PlayerMap.FindAction("Damage", throwIfNotFound: true);
         // UIMap
         m_UIMap = asset.FindActionMap("UIMap", throwIfNotFound: true);
@@ -415,7 +399,6 @@ public partial class @OrpheusControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMap_Aim;
     private readonly InputAction m_PlayerMap_Attack;
     private readonly InputAction m_PlayerMap_Dash;
-    private readonly InputAction m_PlayerMap_Heal;
     private readonly InputAction m_PlayerMap_Damage;
     /// <summary>
     /// Provides access to input actions defined in input action map "PlayerMap".
@@ -444,9 +427,6 @@ public partial class @OrpheusControls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "PlayerMap/Dash".
         /// </summary>
         public InputAction @Dash => m_Wrapper.m_PlayerMap_Dash;
-        /// Provides access to the underlying input action "PlayerMap/Heal".
-        /// </summary>
-        public InputAction @Heal => m_Wrapper.m_PlayerMap_Heal;
         /// <summary>
         /// Provides access to the underlying input action "PlayerMap/Damage".
         /// </summary>
@@ -489,9 +469,6 @@ public partial class @OrpheusControls: IInputActionCollection2, IDisposable
             @Dash.started += instance.OnDash;
             @Dash.performed += instance.OnDash;
             @Dash.canceled += instance.OnDash;
-            @Heal.started += instance.OnHeal;
-            @Heal.performed += instance.OnHeal;
-            @Heal.canceled += instance.OnHeal;
             @Damage.started += instance.OnDamage;
             @Damage.performed += instance.OnDamage;
             @Damage.canceled += instance.OnDamage;
@@ -518,9 +495,6 @@ public partial class @OrpheusControls: IInputActionCollection2, IDisposable
             @Dash.started -= instance.OnDash;
             @Dash.performed -= instance.OnDash;
             @Dash.canceled -= instance.OnDash;
-            @Heal.started -= instance.OnHeal;
-            @Heal.performed -= instance.OnHeal;
-            @Heal.canceled -= instance.OnHeal;
             @Damage.started -= instance.OnDamage;
             @Damage.performed -= instance.OnDamage;
             @Damage.canceled -= instance.OnDamage;
@@ -683,13 +657,11 @@ public partial class @OrpheusControls: IInputActionCollection2, IDisposable
         void OnAttack(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Dash" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// Method invoked when associated input action "Heal" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnDash(InputAction.CallbackContext context);
-        void OnHeal(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Damage" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
