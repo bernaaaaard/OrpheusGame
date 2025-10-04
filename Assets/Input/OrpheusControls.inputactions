@@ -34,6 +34,9 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Dash",
+                    "type": "Button",
+                    "id": "de36e26b-16f6-4198-ac18-001ef8fabf6a",
                     "name": "Heal",
                     "type": "Button",
                     "id": "d32678f5-8033-4df8-9909-983df63ae54f",
@@ -132,6 +135,17 @@
                 },
                 {
                     "name": "",
+                    "id": "7237ea48-cbf4-4cdd-adcb-3c34bf9abe39",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "85c56c3e-914b-460c-bc20-b7249cbc76ca",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
@@ -143,6 +157,12 @@
                 },
                 {
                     "name": "",
+                    "id": "01c97371-6f83-4833-b6a5-c616ebd13f5e",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
                     "id": "d8291c99-e08a-4136-8253-70e9e51ecd86",
                     "path": "<Keyboard>/r",
                     "interactions": "",
@@ -154,6 +174,23 @@
                 },
                 {
                     "name": "",
+                    "id": "ff349e4d-cf63-4312-99fa-f6f9768f8ad3",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1a87c59d-2238-4c21-9ca6-ea5d268c375c",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
                     "id": "0716c9cf-0182-422a-868b-f2cd186a6b93",
                     "path": "<Keyboard>/f",
                     "interactions": "",
