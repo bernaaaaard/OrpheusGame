@@ -1,0 +1,8 @@
+Orpheus
+This is a test of the dialogue loading from an alternative txt file
+Eurydice
+Hoping that this works better for storage and writing
+Hermes
+Using the txt file like this should make it easier to store dialogue and change it on the fly testttttttttttttt/ttttttttttttttttt/tttttyipeeeeeeeeeeeeee
+Perspehone
+Looks like it works yippee
