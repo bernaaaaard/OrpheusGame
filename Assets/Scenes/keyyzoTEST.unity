@@ -796,11 +796,14 @@ MonoBehaviour:
   objectPosOne: {fileID: 1245602673}
   objectPosTwo: {fileID: 175829114}
   objectPosThree: {fileID: 1407402544}
-  showDebugPosition: 1
+  showDebugPosition: 0
   ignoreHeight: 1
   maxDashSpeed: 25
   dashLength: 0.25
   dashCooldownTimer: 3
+  bulletSpawnPosition: {fileID: 1821352958}
+  bulletDamage: 1
+  fireRate: 0.2
 --- !u!143 &1099458371
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1538,6 +1541,7 @@ Transform:
   m_Children:
   - {fileID: 288522021}
   - {fileID: 1794469641}
+  - {fileID: 1821352958}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1794469640
@@ -1629,6 +1633,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1794469640}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1821352957
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1821352958}
+  m_Layer: 6
+  m_Name: BulletSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1821352958
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1821352957}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1724847687}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1972888900
 GameObject:
   m_ObjectHideFlags: 0

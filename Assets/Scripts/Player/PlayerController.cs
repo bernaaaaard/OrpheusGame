@@ -97,6 +97,30 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
+    [Space(5)]
+
+    #region Firing
+
+    [Header("Firing References")]
+
+    [SerializeField] Transform bulletSpawnPosition;
+
+    [Space(2)]
+
+    [Header("Firing Settings")]
+
+    [SerializeField] int bulletDamage = 1;
+    [SerializeField] float fireRate = 0.2f;
+
+    // private variables
+
+    bool _isFiring = false;
+    bool _canFire = false;
+
+    Vector3 _firingDirection;
+
+    #endregion
+
 
 
     #region Input Variables
@@ -111,6 +135,7 @@ public class PlayerController : MonoBehaviour
     Vector3 _playerMovementInput;
     Vector3 _aimingInput;
     bool _dashInput;
+    bool _fireInput;
 
     #endregion
 
@@ -149,14 +174,18 @@ public class PlayerController : MonoBehaviour
         GetPlayerMovementInput();
         GetPlayerAimingInput();
         GetDashingInput();
+        GetFiringInput();
 
         // Movement / Aiming
         ProcessLookDirection();
         CalculateSpeed();
         ProcessMovement();
         ProcessAiming();
-        //MouseAim();
         HandleAiming();
+
+        // Firing
+
+        ProcessFiring();
 
         // Dashing
 
@@ -203,9 +232,14 @@ public class PlayerController : MonoBehaviour
 
     void ProcessLookDirection()
     {
-        if (_playerMovementInput == Vector3.zero)
-            return;
 
+
+        if (_playerMovementInput == Vector3.zero)
+        {
+            playerModelPivot.transform.position = _characterController.transform.position;
+            return;
+        }
+            
         Matrix4x4 isometricMatrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
         Vector3 multipliedMatrix = isometricMatrix.MultiplyPoint3x4(_playerMovementInput);
 
@@ -218,7 +252,7 @@ public class PlayerController : MonoBehaviour
         //transform.rotation = Quaternion.RotateTowards(transform.rotation, rot, baseMoveRotationSpeed * Time.deltaTime);
 
 
-        
+
         playerModelPivot.transform.position = _characterController.transform.position;
         transform.rotation = rot;
         //playerModelPivot.transform.rotation = Quaternion.RotateTowards(playerModelPivot.transform.rotation, rot, baseMoveRotationSpeed * Time.deltaTime);
@@ -239,7 +273,7 @@ public class PlayerController : MonoBehaviour
     {
         bool isGrounded = _characterController.isGrounded;
 
-        Debug.Log("Is player grounded? - " + isGrounded);
+        //Debug.Log("Is player grounded? - " + isGrounded);
 
         if (isGrounded && _velocity.y < 0f)
         {
@@ -399,6 +433,7 @@ public class PlayerController : MonoBehaviour
     void HandleAiming()
     {
         Vector3 direction = _requiredHitPoint - transform.position;
+        _firingDirection = direction;
 
         if (ignoreHeight)
         {
@@ -406,6 +441,47 @@ public class PlayerController : MonoBehaviour
         }
 
         playerModelPivot.transform.forward = direction;
+    }
+
+    #endregion
+
+    #region Firing Functions
+
+    void GetFiringInput()
+    {
+        bool fireInput = _playerInputActions.PlayerMap.Attack.IsPressed();
+        _fireInput = fireInput;
+
+        //Debug.Log("Player is firing: " + _fireInput);
+    }
+
+    void ProcessFiring()
+    {
+        Ray firingRay = new Ray(bulletSpawnPosition.transform.position, bulletSpawnPosition.transform.forward);
+
+        RaycastHit fireHit;
+
+        Debug.DrawRay(firingRay.origin, firingRay.direction * 100f, Color.darkRed);
+
+        if (_isFiring && Physics.Raycast(firingRay, out fireHit, 150f))
+        {
+            if (fireHit.collider)
+            {
+                Debug.Log("I have hit something");
+            }
+
+            Debug.Log(fireHit.transform.gameObject.name);
+        }
+    }
+
+    IEnumerator FiringRoutine()
+    {
+        _canFire = false;
+
+
+        
+        yield return new WaitForSeconds(fireRate);
+        _canFire = true;
     }
 
     #endregion
