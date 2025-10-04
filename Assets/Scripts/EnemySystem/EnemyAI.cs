@@ -6,14 +6,15 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     public enum EnemyState { Idle, Chasing, Attacking, Dead }
-    public EnemyState currentState;
+    protected EnemyState currentState;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private NavMeshAgent navAgent;
-    private Transform playerTransform;
+    protected NavMeshAgent navAgent;
+    protected Transform playerTransform;
     //private UnitHealth health;
     private MeleeAttack meleeAttack;
     private ProjectileAttack projectileAttack;
 
+    
     //Animation
     private Animator animator;
 
@@ -23,7 +24,7 @@ public class EnemyAI : MonoBehaviour
     public float attackRange = 3f;
 
 
-    void Awake()
+    protected virtual void Awake()
     {
         navAgent = GetComponent<NavMeshAgent>();
         //health = GetComponent<UnitHealth>();
@@ -68,22 +69,26 @@ public class EnemyAI : MonoBehaviour
 
 
 
-    void UpdateIdleState()
-    {
-        navAgent.isStopped = true;
+    protected virtual void UpdateIdleState()
+    {   if (navAgent)
+        {
+            navAgent.isStopped = true;
+        }
+        Debug.Log("Code is working here");
         if (playerTransform != null && Vector3.Distance(transform.position, playerTransform.position) <= sightRange)
         {
             currentState = EnemyState.Chasing;
         }
     }
 
-    void UpdateChasingState()
+    protected virtual void UpdateChasingState()
     {
         if (playerTransform == null) return;
-
-        navAgent.isStopped = false;
-        navAgent.SetDestination(playerTransform.position);
-
+        if (navAgent)
+        {
+            navAgent.isStopped = false;
+            navAgent.SetDestination(playerTransform.position);
+        }
         if (Vector3.Distance(transform.position, playerTransform.position) <= attackRange)
         {
             currentState = EnemyState.Attacking;
@@ -92,30 +97,35 @@ public class EnemyAI : MonoBehaviour
 
 
 
-    void UpdateAttackingState()
+    protected virtual void UpdateAttackingState()
     {
-        navAgent.isStopped = true;
+        if (navAgent)
+        {
+            navAgent.isStopped = true;
+        }
 
         if (playerTransform == null)
-        {
-            currentState = EnemyState.Idle;
-            return;
-        }
+            {
+                currentState = EnemyState.Idle;
+                return;
+            }
 
         transform.LookAt(playerTransform);
 
 
         Debug.Log("Attacking!");
-        animator.SetTrigger("Attack");
+        //animator.SetTrigger("Attack");
 
         if (meleeAttack != null)
         {
             //meleeAttack.PerformAttack(playerTransform.gameObject);
         }
-        else if (projectileAttack != null)
+        if (projectileAttack != null)
         {
             projectileAttack.PerformAttack(playerTransform.gameObject);
         }
+        
+
 
         if (Vector3.Distance(transform.position, playerTransform.position) > attackRange)
         {
