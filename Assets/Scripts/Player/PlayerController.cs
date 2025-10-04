@@ -40,6 +40,8 @@ public class PlayerController : MonoBehaviour
 
     float _currentSpeed;
 
+    Vector3 _velocity;
+
     #endregion
 
     [Space(5)]
@@ -138,6 +140,10 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        // Gravity
+
+        ProcessGravity();
+
         // Input Functions
 
         GetPlayerMovementInput();
@@ -164,7 +170,7 @@ public class PlayerController : MonoBehaviour
         Vector2 movementInput = _playerInputActions.PlayerMap.Move.ReadValue<Vector2>();
         _playerMovementInput = new Vector3(movementInput.x, 0f, movementInput.y);
 
-        Debug.Log(movementInput);
+        //Debug.Log(movementInput);
     }
 
     void CalculateSpeed()
@@ -191,7 +197,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        Vector3 moveDirection = transform.forward * _currentSpeed * _playerMovementInput.magnitude * Time.deltaTime;
+        Vector3 moveDirection = transform.forward * _currentSpeed * _playerMovementInput.magnitude * Time.deltaTime + _velocity;
         _characterController.Move(moveDirection);
     }
 
@@ -223,8 +229,27 @@ public class PlayerController : MonoBehaviour
 
     Vector3 HandleGravity()
     {
+        bool isGrounded = _characterController.isGrounded;
+
         Vector3 gravityVec = new Vector3(0.0f, maxGravitySpeed, 0.0f);
         return gravityVec;
+    }
+
+    void ProcessGravity()
+    {
+        bool isGrounded = _characterController.isGrounded;
+
+        Debug.Log("Is player grounded? - " + isGrounded);
+
+        if (isGrounded && _velocity.y < 0f)
+        {
+            _velocity.y = -2f;
+        }
+
+        else if (!isGrounded)
+        {
+            _velocity.y = maxGravitySpeed * Time.deltaTime;
+        }
     }
 
     #endregion
@@ -236,7 +261,7 @@ public class PlayerController : MonoBehaviour
         Vector2 aimingInput = _playerInputActions.PlayerMap.Aim.ReadValue<Vector2>();
         _aimingInput = aimingInput;
 
-        Debug.Log("Mouse / Aim Pos: " + aimingInput);
+        //Debug.Log("Mouse / Aim Pos: " + aimingInput);
     }
 
     void ProcessAiming()
@@ -278,10 +303,10 @@ public class PlayerController : MonoBehaviour
             // Length of the triangle
 
             Vector3 playerHeight = new Vector3(hit.point.x, this.transform.position.y, hit.point.z);
-            Debug.Log("Player Height Pos: " + playerHeight);
+           // Debug.Log("Player Height Pos: " + playerHeight);
 
             Vector3 hitPoint = new Vector3(hit.point.x, hit.point.y, hit.point.z);
-            Debug.Log("Hit Point Pos: " + hitPoint);
+           // Debug.Log("Hit Point Pos: " + hitPoint);
 
             float length = Vector3.Distance(playerHeight, hitPoint);
 
@@ -392,7 +417,7 @@ public class PlayerController : MonoBehaviour
         bool dashInput = _playerInputActions.PlayerMap.Dash.IsPressed();
         _dashInput = dashInput;
 
-        Debug.Log("Player has dashed: " + dashInput);
+       // Debug.Log("Player has dashed: " + dashInput);
     }
 
     void ProcessDash()
