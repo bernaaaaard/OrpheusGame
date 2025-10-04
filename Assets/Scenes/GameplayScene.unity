@@ -1642,6 +1642,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Intro Section
       objectReference: {fileID: 0}
+    - target: {fileID: 8403037507580504537, guid: d71659cbc9130224194073482b84aacb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 9092751778242362696, guid: d71659cbc9130224194073482b84aacb, type: 3}
       propertyPath: m_Direction
       value: 1
