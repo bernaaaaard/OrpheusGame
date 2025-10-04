@@ -1109,6 +1109,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shade_Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 7614181562678415802, guid: 4cbd6bb8f3fa7a44cb2b2eeef34b0fa4, type: 3}
+      propertyPath: sightRange
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7614181562678415802, guid: 4cbd6bb8f3fa7a44cb2b2eeef34b0fa4, type: 3}
+      propertyPath: attackRange
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7908917864100361709, guid: 4cbd6bb8f3fa7a44cb2b2eeef34b0fa4, type: 3}
+      propertyPath: projectileForce
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1691,7 +1703,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 183
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_GenerateLinks: 0
