@@ -388,23 +388,23 @@ public class PlayerController : MonoBehaviour
                 _requiredHitPoint = cameraRay.GetPoint(distanceFromCamera);
             }
 
-            if (showDebugPosition)
-            {
-                objectPosOne.SetActive(true);
-                objectPosTwo.SetActive(true);
-                objectPosThree.SetActive(true);
+            //if (showDebugPosition)
+            //{
+            //    objectPosOne.SetActive(true);
+            //    objectPosTwo.SetActive(true);
+            //    objectPosThree.SetActive(true);
 
-                objectPosOne.transform.position = hitPoint;
-                objectPosTwo.transform.position = playerHeight;
-                objectPosThree.transform.position = _requiredHitPoint;
-            }
+            //    objectPosOne.transform.position = hitPoint;
+            //    objectPosTwo.transform.position = playerHeight;
+            //    objectPosThree.transform.position = _requiredHitPoint;
+            //}
 
-            else
-            {
-                objectPosOne.SetActive(false);
-                objectPosTwo.SetActive(false);
-                objectPosThree.SetActive(false);
-            }
+            //else
+            //{
+            //    objectPosOne.SetActive(false);
+            //    objectPosTwo.SetActive(false);
+            //    objectPosThree.SetActive(false);
+            //}
 
 
         }
