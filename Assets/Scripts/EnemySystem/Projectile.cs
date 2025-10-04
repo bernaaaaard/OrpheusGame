@@ -18,6 +18,11 @@ public class Projectile : MonoBehaviour
             health.DmgUnit(1);
         }
 
+        if (collision.gameObject.TryGetComponent(out PlayerBehaviour playerHealth))
+        {
+            playerHealth.PlayerTakeDamage(1);
+        }
+
         
         Destroy(gameObject);
     }
