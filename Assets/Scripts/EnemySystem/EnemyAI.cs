@@ -17,7 +17,7 @@ public class EnemyAI : MonoBehaviour
     //health and damage stuff
     private PlayerBehaviour playerBehaviour;
     private float lastAttackTime = 0f; 
-    public float attackCooldown = 1.5f;
+    public float attackCooldown = 1f;
 
     //Animation
     private Animator animator;
@@ -132,7 +132,7 @@ public class EnemyAI : MonoBehaviour
             projectileAttack.PerformAttack(playerTransform.gameObject);
         }
 
-        // only attack if enough time has passed
+        // only attack if enough time has passed?
         if (Time.time - lastAttackTime >= attackCooldown)
         {
             if (playerBehaviour != null)
