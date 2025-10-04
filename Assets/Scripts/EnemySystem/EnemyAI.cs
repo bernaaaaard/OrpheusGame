@@ -14,7 +14,11 @@ public class EnemyAI : MonoBehaviour
     private MeleeAttack meleeAttack;
     private ProjectileAttack projectileAttack;
 
-    
+    //health and damage stuff
+    private PlayerBehaviour playerBehaviour;
+    private float lastAttackTime = 0f; 
+    public float attackCooldown = 1.5f;
+
     //Animation
     private Animator animator;
 
@@ -27,7 +31,6 @@ public class EnemyAI : MonoBehaviour
     protected virtual void Awake()
     {
         navAgent = GetComponent<NavMeshAgent>();
-        //health = GetComponent<UnitHealth>();
 
         meleeAttack = GetComponent<MeleeAttack>();
         projectileAttack = GetComponent<ProjectileAttack>();
@@ -40,7 +43,14 @@ public class EnemyAI : MonoBehaviour
     void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+
+        if (playerTransform != null)
+        {
+            playerBehaviour = playerTransform.GetComponent<PlayerBehaviour>();
+        }
+
         currentState = EnemyState.Idle;
+
     }
 
     // Update is called once per frame
@@ -103,35 +113,39 @@ public class EnemyAI : MonoBehaviour
         {
             navAgent.isStopped = true;
         }
-
+            
         if (playerTransform == null)
-            {
-                currentState = EnemyState.Idle;
-                return;
-            }
+        {
+            currentState = EnemyState.Idle;
+            return;
+        }
 
         transform.LookAt(playerTransform);
-
-
-        Debug.Log("Attacking!");
-        //animator.SetTrigger("Attack");
-
+        
         if (meleeAttack != null)
         {
             //meleeAttack.PerformAttack(playerTransform.gameObject);
         }
+
         if (projectileAttack != null)
         {
             projectileAttack.PerformAttack(playerTransform.gameObject);
         }
-        
 
+        // only attack if enough time has passed
+        if (Time.time - lastAttackTime >= attackCooldown)
+        {
+            if (playerBehaviour != null)
+            {
+                playerBehaviour.PlayerTakeDamage(1);
+            }
+            lastAttackTime = Time.time;
+        }
 
         if (Vector3.Distance(transform.position, playerTransform.position) > attackRange)
         {
             currentState = EnemyState.Chasing;
         }
-
     }
 
      private void OnDrawGizmosSelected()

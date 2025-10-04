@@ -18,8 +18,9 @@ public class PlayerBehaviour : MonoBehaviour
     {
         _controls = new OrpheusControls();
 
+
         _controls.PlayerMap.Damage.performed += ctx => PlayerTakeDamage(10);
-        //_controls.PlayerMap.Heal.performed += ctx => PlayerHeal(10);
+        _controls.PlayerMap.Heal.performed += ctx => PlayerHeal(10);
         Debug.Log("error in this line of heal code, add back in later");
     }
 
@@ -51,8 +52,9 @@ public class PlayerBehaviour : MonoBehaviour
     public void PlayerDie()
     {
         Debug.Log("💀 Player has died!");
-
-        GetComponent<PlayerController>().enabled = false;
+        
+        //change the PlayerMovement to whatever we have
+        GetComponent<PlayerMovement>().enabled = false;
         _controls.Disable();
     }
 
