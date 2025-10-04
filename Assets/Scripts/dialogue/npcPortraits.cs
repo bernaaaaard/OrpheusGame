@@ -5,6 +5,7 @@ public class npcPortraits : MonoBehaviour
 {
     public void setPortrait(string portrait) 
     {
+        Debug.Log(portrait);
         if (Resources.Load<Texture2D>(portrait) != null)
         {
             Texture2D portraitSprite = Resources.Load<Texture2D>(portrait);
@@ -13,7 +14,8 @@ public class npcPortraits : MonoBehaviour
         }
         else 
         {
-
+            gameObject.GetComponent<Image>().sprite = null;
+            gameObject.SetActive(false);
         }
     }
 }
