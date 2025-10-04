@@ -161,6 +161,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _canDash = true;
+        _canFire = false;
     }
 
     private void Update()
@@ -215,6 +216,16 @@ public class PlayerController : MonoBehaviour
         }
 
         _currentSpeed = Mathf.Clamp(_currentSpeed, 0f, maxMovementSpeed);
+
+        if (_currentSpeed == 0f && _playerMovementInput == Vector3.zero)
+        {
+            _canFire = true;
+        }
+
+        else
+        { 
+            _canFire = false;
+        }
     }
 
     void ProcessMovement()
@@ -462,15 +473,20 @@ public class PlayerController : MonoBehaviour
         RaycastHit fireHit;
 
         Debug.DrawRay(firingRay.origin, firingRay.direction * 100f, Color.darkRed);
-
-        if (_isFiring && Physics.Raycast(firingRay, out fireHit, 150f))
+        
+        if (Physics.Raycast(firingRay, out fireHit, Mathf.Infinity))
         {
-            if (fireHit.collider)
+            //Debug.Log(fireHit.transform.gameObject.name);
+
+
+
+            if (_fireInput && _canFire)
             {
-                Debug.Log("I have hit something");
+                // TODO: Add the damaging mechanic when firing and hitting a valid target
+
+                StartCoroutine(FiringRoutine());
             }
 
-            Debug.Log(fireHit.transform.gameObject.name);
         }
     }
 
@@ -478,9 +494,11 @@ public class PlayerController : MonoBehaviour
     {
         _canFire = false;
 
-
-        
+        _isFiring = true;
+        Debug.Log("Firing shot at something!");
+        _isFiring = false;
         yield return new WaitForSeconds(fireRate);
+
         _canFire = true;
     }
 
