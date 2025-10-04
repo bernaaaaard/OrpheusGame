@@ -300,6 +300,107 @@ public partial class @OrpheusControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""RhythmMap"",
+            ""id"": ""7dbc84f6-fa53-49ab-a862-8ad24fe7d187"",
+            ""actions"": [
+                {
+                    ""name"": ""RhythmLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""c4c9d213-012d-4102-bd88-7573df8be025"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RhythmTop"",
+                    ""type"": ""Button"",
+                    ""id"": ""6d17f8d9-738a-4c2f-8599-b3091741059b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RhythmRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""2e33a967-2209-492e-ab91-9f5f50c3cc51"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""27b90b72-4dd3-484d-9181-be4ed039027e"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RhythmLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fcb10ff6-d5be-443e-9a69-b2682576bcbd"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RhythmLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c74c1094-ec08-4d95-8a80-236f3cd8e290"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RhythmTop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e9e1a400-2133-43a3-9170-e07ce8085e16"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RhythmTop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8e932a92-3180-4980-8692-5b8774226dea"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RhythmRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""89f4249b-7cac-4923-be5b-766fe20d5829"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RhythmRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -314,12 +415,18 @@ public partial class @OrpheusControls: IInputActionCollection2, IDisposable
         // UIMap
         m_UIMap = asset.FindActionMap("UIMap", throwIfNotFound: true);
         m_UIMap_Newaction = m_UIMap.FindAction("New action", throwIfNotFound: true);
+        // RhythmMap
+        m_RhythmMap = asset.FindActionMap("RhythmMap", throwIfNotFound: true);
+        m_RhythmMap_RhythmLeft = m_RhythmMap.FindAction("RhythmLeft", throwIfNotFound: true);
+        m_RhythmMap_RhythmTop = m_RhythmMap.FindAction("RhythmTop", throwIfNotFound: true);
+        m_RhythmMap_RhythmRight = m_RhythmMap.FindAction("RhythmRight", throwIfNotFound: true);
     }
 
     ~@OrpheusControls()
     {
         UnityEngine.Debug.Assert(!m_PlayerMap.enabled, "This will cause a leak and performance issues, OrpheusControls.PlayerMap.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_UIMap.enabled, "This will cause a leak and performance issues, OrpheusControls.UIMap.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_RhythmMap.enabled, "This will cause a leak and performance issues, OrpheusControls.RhythmMap.Disable() has not been called.");
     }
 
     /// <summary>
@@ -627,6 +734,124 @@ public partial class @OrpheusControls: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="UIMapActions" /> instance referencing this action map.
     /// </summary>
     public UIMapActions @UIMap => new UIMapActions(this);
+
+    // RhythmMap
+    private readonly InputActionMap m_RhythmMap;
+    private List<IRhythmMapActions> m_RhythmMapActionsCallbackInterfaces = new List<IRhythmMapActions>();
+    private readonly InputAction m_RhythmMap_RhythmLeft;
+    private readonly InputAction m_RhythmMap_RhythmTop;
+    private readonly InputAction m_RhythmMap_RhythmRight;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "RhythmMap".
+    /// </summary>
+    public struct RhythmMapActions
+    {
+        private @OrpheusControls m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public RhythmMapActions(@OrpheusControls wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "RhythmMap/RhythmLeft".
+        /// </summary>
+        public InputAction @RhythmLeft => m_Wrapper.m_RhythmMap_RhythmLeft;
+        /// <summary>
+        /// Provides access to the underlying input action "RhythmMap/RhythmTop".
+        /// </summary>
+        public InputAction @RhythmTop => m_Wrapper.m_RhythmMap_RhythmTop;
+        /// <summary>
+        /// Provides access to the underlying input action "RhythmMap/RhythmRight".
+        /// </summary>
+        public InputAction @RhythmRight => m_Wrapper.m_RhythmMap_RhythmRight;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_RhythmMap; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="RhythmMapActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(RhythmMapActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="RhythmMapActions" />
+        public void AddCallbacks(IRhythmMapActions instance)
+        {
+            if (instance == null || m_Wrapper.m_RhythmMapActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_RhythmMapActionsCallbackInterfaces.Add(instance);
+            @RhythmLeft.started += instance.OnRhythmLeft;
+            @RhythmLeft.performed += instance.OnRhythmLeft;
+            @RhythmLeft.canceled += instance.OnRhythmLeft;
+            @RhythmTop.started += instance.OnRhythmTop;
+            @RhythmTop.performed += instance.OnRhythmTop;
+            @RhythmTop.canceled += instance.OnRhythmTop;
+            @RhythmRight.started += instance.OnRhythmRight;
+            @RhythmRight.performed += instance.OnRhythmRight;
+            @RhythmRight.canceled += instance.OnRhythmRight;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="RhythmMapActions" />
+        private void UnregisterCallbacks(IRhythmMapActions instance)
+        {
+            @RhythmLeft.started -= instance.OnRhythmLeft;
+            @RhythmLeft.performed -= instance.OnRhythmLeft;
+            @RhythmLeft.canceled -= instance.OnRhythmLeft;
+            @RhythmTop.started -= instance.OnRhythmTop;
+            @RhythmTop.performed -= instance.OnRhythmTop;
+            @RhythmTop.canceled -= instance.OnRhythmTop;
+            @RhythmRight.started -= instance.OnRhythmRight;
+            @RhythmRight.performed -= instance.OnRhythmRight;
+            @RhythmRight.canceled -= instance.OnRhythmRight;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="RhythmMapActions.UnregisterCallbacks(IRhythmMapActions)" />.
+        /// </summary>
+        /// <seealso cref="RhythmMapActions.UnregisterCallbacks(IRhythmMapActions)" />
+        public void RemoveCallbacks(IRhythmMapActions instance)
+        {
+            if (m_Wrapper.m_RhythmMapActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="RhythmMapActions.AddCallbacks(IRhythmMapActions)" />
+        /// <seealso cref="RhythmMapActions.RemoveCallbacks(IRhythmMapActions)" />
+        /// <seealso cref="RhythmMapActions.UnregisterCallbacks(IRhythmMapActions)" />
+        public void SetCallbacks(IRhythmMapActions instance)
+        {
+            foreach (var item in m_Wrapper.m_RhythmMapActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_RhythmMapActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="RhythmMapActions" /> instance referencing this action map.
+    /// </summary>
+    public RhythmMapActions @RhythmMap => new RhythmMapActions(this);
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "PlayerMap" which allows adding and removing callbacks.
     /// </summary>
@@ -684,5 +909,34 @@ public partial class @OrpheusControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnNewaction(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "RhythmMap" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="RhythmMapActions.AddCallbacks(IRhythmMapActions)" />
+    /// <seealso cref="RhythmMapActions.RemoveCallbacks(IRhythmMapActions)" />
+    public interface IRhythmMapActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "RhythmLeft" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnRhythmLeft(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "RhythmTop" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnRhythmTop(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "RhythmRight" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnRhythmRight(InputAction.CallbackContext context);
     }
 }

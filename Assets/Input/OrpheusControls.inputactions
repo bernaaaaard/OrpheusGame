@@ -37,9 +37,6 @@
                     "name": "Dash",
                     "type": "Button",
                     "id": "de36e26b-16f6-4198-ac18-001ef8fabf6a",
-                    "name": "Heal",
-                    "type": "Button",
-                    "id": "d32678f5-8033-4df8-9909-983df63ae54f",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -163,12 +160,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Attack",
-                    "id": "d8291c99-e08a-4136-8253-70e9e51ecd86",
-                    "path": "<Keyboard>/r",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Heal",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -191,12 +182,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Dash",
-                    "id": "0716c9cf-0182-422a-868b-f2cd186a6b93",
-                    "path": "<Keyboard>/f",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Damage",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -225,6 +210,107 @@
                     "processors": "",
                     "groups": "",
                     "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "RhythmMap",
+            "id": "7dbc84f6-fa53-49ab-a862-8ad24fe7d187",
+            "actions": [
+                {
+                    "name": "RhythmLeft",
+                    "type": "Button",
+                    "id": "c4c9d213-012d-4102-bd88-7573df8be025",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RhythmTop",
+                    "type": "Button",
+                    "id": "6d17f8d9-738a-4c2f-8599-b3091741059b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RhythmRight",
+                    "type": "Button",
+                    "id": "2e33a967-2209-492e-ab91-9f5f50c3cc51",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "27b90b72-4dd3-484d-9181-be4ed039027e",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RhythmLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fcb10ff6-d5be-443e-9a69-b2682576bcbd",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RhythmLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c74c1094-ec08-4d95-8a80-236f3cd8e290",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RhythmTop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e9e1a400-2133-43a3-9170-e07ce8085e16",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RhythmTop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8e932a92-3180-4980-8692-5b8774226dea",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RhythmRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "89f4249b-7cac-4923-be5b-766fe20d5829",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RhythmRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
