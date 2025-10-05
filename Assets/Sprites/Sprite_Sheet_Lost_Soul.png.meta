@@ -1,0 +1,692 @@
+fileFormatVersion: 2
+guid: 1d6a1ffb857179844abfbebe11aa417d
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Sprite_Sheet_Lost_Soul_0
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 3771
+        width: 290
+        height: 523
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9074ab32c0fd49f4ab91ef70a1c95c3b
+      internalID: -763500919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_Sheet_Lost_Soul_1
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 3119
+        width: 406
+        height: 492
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e0148d9d68a68f44959c3ae107722c3
+      internalID: 150005616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_Sheet_Lost_Soul_2
+      rect:
+        serializedVersion: 2
+        x: 673
+        y: 3292
+        width: 426
+        height: 322
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e283f9f73c2959b4ab71fe3cf68ff290
+      internalID: 919641152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_Sheet_Lost_Soul_3
+      rect:
+        serializedVersion: 2
+        x: 1196
+        y: 3147
+        width: 517
+        height: 262
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61f22e14d4eb78146b80207dc705e664
+      internalID: -2091721487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_Sheet_Lost_Soul_4
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 2495
+        width: 234
+        height: 463
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a527ffe297d3a514185a49cb1787dd05
+      internalID: 1843050087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_Sheet_Lost_Soul_5
+      rect:
+        serializedVersion: 2
+        x: 777
+        y: 2545
+        width: 297
+        height: 413
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b92f7c2df81ffe141b83953019cfd570
+      internalID: 1015100604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_Sheet_Lost_Soul_6
+      rect:
+        serializedVersion: 2
+        x: 1326
+        y: 2495
+        width: 261
+        height: 482
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d446225a012b588489e4685d1933c4f2
+      internalID: 1250019080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_Sheet_Lost_Soul_7
+      rect:
+        serializedVersion: 2
+        x: 1893
+        y: 2501
+        width: 315
+        height: 476
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5af738e9fa0836642a5125a6a44f053f
+      internalID: 824547598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_Sheet_Lost_Soul_8
+      rect:
+        serializedVersion: 2
+        x: 2381
+        y: 2476
+        width: 322
+        height: 507
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80721fc73698cd040b67759086bf959f
+      internalID: 1310285403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_Sheet_Lost_Soul_9
+      rect:
+        serializedVersion: 2
+        x: 2763
+        y: 2693
+        width: 384
+        height: 212
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3950c67573697914ba9166ac17cb9c5b
+      internalID: -1241056354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_Sheet_Lost_Soul_10
+      rect:
+        serializedVersion: 2
+        x: 3220
+        y: 2665
+        width: 416
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b524d74aa8a1cb84b98ff1c316ad29b1
+      internalID: -49023901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_Sheet_Lost_Soul_11
+      rect:
+        serializedVersion: 2
+        x: 3708
+        y: 2668
+        width: 549
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6052db4353d2d814384f22145bc37b75
+      internalID: 393878201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_Sheet_Lost_Soul_12
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 1675
+        width: 215
+        height: 530
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05d51c09b91a049439d2bbb9f2b9a9e7
+      internalID: -1688325565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_Sheet_Lost_Soul_13
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 1048
+        width: 378
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24cd59745ad3ca84cb9e40886abe6d83
+      internalID: 717027237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_Sheet_Lost_Soul_14
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 1162
+        width: 410
+        height: 362
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a1f0b22dc7e1854489ee7163b49efad
+      internalID: 1475054571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_Sheet_Lost_Soul_15
+      rect:
+        serializedVersion: 2
+        x: 1181
+        y: 1036
+        width: 595
+        height: 309
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9756c41a3dc262744b372719c593f7f5
+      internalID: 1208433310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_Sheet_Lost_Soul_16
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 346
+        width: 283
+        height: 545
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4c4ba3d1ba744440aa30d84986f1900
+      internalID: 298172167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_Sheet_Lost_Soul_17
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 368
+        width: 337
+        height: 453
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 421ebe0fd5f8afd4180d131c76de28cb
+      internalID: 1492081667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_Sheet_Lost_Soul_18
+      rect:
+        serializedVersion: 2
+        x: 1341
+        y: 339
+        width: 290
+        height: 492
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf5ae5e97697d134b85d49654aef9a6a
+      internalID: -504262541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_Sheet_Lost_Soul_19
+      rect:
+        serializedVersion: 2
+        x: 1789
+        y: 355
+        width: 441
+        height: 498
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb718de7c95aa0a4fabea0c2550c7704
+      internalID: 1966321260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_Sheet_Lost_Soul_20
+      rect:
+        serializedVersion: 2
+        x: 2407
+        y: 342
+        width: 305
+        height: 520
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c8fd9cd68d9ab1449baf99e2284d105
+      internalID: -1075095698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_Sheet_Lost_Soul_21
+      rect:
+        serializedVersion: 2
+        x: 2738
+        y: 601
+        width: 406
+        height: 195
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2065d82ac24766a4f8c13b905ec02d0c
+      internalID: 1340993304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_Sheet_Lost_Soul_22
+      rect:
+        serializedVersion: 2
+        x: 3204
+        y: 595
+        width: 432
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f13d7c521fcc884e8ba4ce4a6aa42dd
+      internalID: -1018567648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_Sheet_Lost_Soul_23
+      rect:
+        serializedVersion: 2
+        x: 3725
+        y: 831
+        width: 224
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d688bb1c91da0c4088b4e31660483e4
+      internalID: -1450074114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_Sheet_Lost_Soul_24
+      rect:
+        serializedVersion: 2
+        x: 3696
+        y: 579
+        width: 551
+        height: 214
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abd55848826f4b2498e54ae374febe48
+      internalID: -541198696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 80ccad827052f304bbf8a9a097f66dfd
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Sprite_Sheet_Lost_Soul_0: -763500919
+      Sprite_Sheet_Lost_Soul_1: 150005616
+      Sprite_Sheet_Lost_Soul_10: -49023901
+      Sprite_Sheet_Lost_Soul_11: 393878201
+      Sprite_Sheet_Lost_Soul_12: -1688325565
+      Sprite_Sheet_Lost_Soul_13: 717027237
+      Sprite_Sheet_Lost_Soul_14: 1475054571
+      Sprite_Sheet_Lost_Soul_15: 1208433310
+      Sprite_Sheet_Lost_Soul_16: 298172167
+      Sprite_Sheet_Lost_Soul_17: 1492081667
+      Sprite_Sheet_Lost_Soul_18: -504262541
+      Sprite_Sheet_Lost_Soul_19: 1966321260
+      Sprite_Sheet_Lost_Soul_2: 919641152
+      Sprite_Sheet_Lost_Soul_20: -1075095698
+      Sprite_Sheet_Lost_Soul_21: 1340993304
+      Sprite_Sheet_Lost_Soul_22: -1018567648
+      Sprite_Sheet_Lost_Soul_23: -1450074114
+      Sprite_Sheet_Lost_Soul_24: -541198696
+      Sprite_Sheet_Lost_Soul_3: -2091721487
+      Sprite_Sheet_Lost_Soul_4: 1843050087
+      Sprite_Sheet_Lost_Soul_5: 1015100604
+      Sprite_Sheet_Lost_Soul_6: 1250019080
+      Sprite_Sheet_Lost_Soul_7: 824547598
+      Sprite_Sheet_Lost_Soul_8: 1310285403
+      Sprite_Sheet_Lost_Soul_9: -1241056354
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
