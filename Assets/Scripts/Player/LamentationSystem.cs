@@ -29,10 +29,10 @@ public class LamentationSystem : MonoBehaviour
 
     private void Start()
     {
-        SelectRandomLamentation();
+        
     }
 
-    void SelectRandomLamentation()
+    public void SelectRandomLamentation()
     {
         if(allLamentations.Count < 1)
             return;
