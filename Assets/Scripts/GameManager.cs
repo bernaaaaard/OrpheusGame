@@ -4,7 +4,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager gameManager { get; private set; }
 
-    public UnitHealth _playerHealth = new UnitHealth(100, 100);
+    public UnitHealth _playerHealth = new UnitHealth(10, 10);
 
     public AugmentUIManager _augmentUIManager;
 
@@ -24,6 +24,10 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        _augmentUIManager.ShowCards();
+        if (_augmentUIManager)
+        {
+            _augmentUIManager.ShowCards();
+        }
+        
     }
 }
