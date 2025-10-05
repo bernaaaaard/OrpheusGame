@@ -21,6 +21,7 @@ public class HealthBar : MonoBehaviour
 
             if (healthSlider.value != easeHealthSlider.value)
             {
+                Debug.Log("ease health slider" + GameManager.gameManager._playerHealth.Health);
                 easeHealthSlider.value = Mathf.Lerp(easeHealthSlider.value, GameManager.gameManager._playerHealth.Health, lerpSpeed);
             }
         }
