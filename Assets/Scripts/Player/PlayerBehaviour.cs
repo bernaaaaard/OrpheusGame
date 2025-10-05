@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerBehaviour : MonoBehaviour
 {
     private OrpheusControls _controls;
+    public GameObject deathMenu;
 
     private void Start()
     {
@@ -54,6 +55,7 @@ public class PlayerBehaviour : MonoBehaviour
 
         GetComponent<PlayerController>().enabled = false;
         _controls.Disable();
+        deathMenu.SetActive(true);
     }
 
 }
