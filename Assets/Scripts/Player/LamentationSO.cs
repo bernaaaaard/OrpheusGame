@@ -7,5 +7,5 @@ public class LamentationSO : ScriptableObject
     public string Title;
     [TextArea(1,2)]
     public string Description;
-    public Image Image;
+    public Sprite Image;
 }

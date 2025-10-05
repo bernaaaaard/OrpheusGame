@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LamentationSO
   Title: Reconstruction
   Description: Passively heal while not in combat
-  Image: {fileID: 0}
+  Image: {fileID: -1190394546, guid: d02d9a0dfb7ecf54e8711af40188868d, type: 3}

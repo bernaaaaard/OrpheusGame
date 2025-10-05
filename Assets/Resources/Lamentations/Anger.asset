@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LamentationSO
   Title: Anger
   Description: All damage you deal is doubled
-  Image: {fileID: 0}
+  Image: {fileID: 581617346, guid: d02d9a0dfb7ecf54e8711af40188868d, type: 3}

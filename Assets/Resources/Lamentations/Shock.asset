@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LamentationSO
   Title: Shock
   Description: Dashing causes lightning to spread to nearby enemies
-  Image: {fileID: 0}
+  Image: {fileID: -675002939, guid: d02d9a0dfb7ecf54e8711af40188868d, type: 3}

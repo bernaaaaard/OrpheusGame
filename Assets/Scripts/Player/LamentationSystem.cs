@@ -39,6 +39,8 @@ public class LamentationSystem : MonoBehaviour
        
         int randomLamentationNo = Random.Range(0, allLamentations.Count);
 
+       
+
         if (activeLamentation == allLamentations[randomLamentationNo])
         {
             SelectRandomLamentation();
@@ -49,7 +51,7 @@ public class LamentationSystem : MonoBehaviour
             activeLamentation = allLamentations[randomLamentationNo];
         }
 
-         
+        
     }
 
 }
