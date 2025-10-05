@@ -15,12 +15,16 @@ public class rhythmGameUI : MonoBehaviour
     private float qtePercent;
     private KeyCode keyToPress;
     public TMP_Text keyText;
-    private bool qteInput = false;
+    public bool qteInput = false;
     public bool coroutineRunning = false;
     public bool qteFlag = false;
     public int qteCount;
     public float timingFactor;
     public float zz;
+
+    //public GameObject perfect;
+    //public GameObject good;
+    //public GameObject fail;
     void Start()
     {
         coroutineRunning = false;
@@ -38,64 +42,74 @@ public class rhythmGameUI : MonoBehaviour
     void Update()
     {
         waitTime = rhythmController.bps / 21f;
-        if (qteFinished && !coroutineRunning)
+        if (qteFinished && !coroutineRunning && qteFlag && qteCount < 3)
         {
-            timingFactor = Random.Range(1, 4);
-            switch (timingFactor) {
+            timingFactor = Random.Range(1, 3);
+            switch (timingFactor)
+            {
                 case 1:
-                    timingFactor = 0.5f;
+                    timingFactor = 1;
                     break;
                 case 2:
-                    timingFactor = 1f;
+                    timingFactor = 2;
                     break;
-                case 3:
-                    timingFactor = 2f;
-                    break;
-                }
+            }
             StartCoroutine(StartQTE(keyToPress));
             keyText.gameObject.SetActive(true);
             qteFinished = false;
         }
-        else if (!qteFinished) 
+        else if (!qteFinished)
         {
-                if (UnityEngine.Input.GetKeyDown(keyToPress))
+            if (UnityEngine.Input.GetKeyDown(keyToPress))
+            {
+                inputDetected = true;
+                qteInput = true;
+                Debug.Log(qtePercent);
+                if (qtePercent <= 13 || qtePercent >= 27)
                 {
-                    inputDetected = true;
-                    qteInput = true;    
-                    Debug.Log(qtePercent);
-                    if (qtePercent <= 13 || qtePercent >= 27)
-                    {
-                        Debug.Log("QTE Perfect");
-                    }
-                    else if (qtePercent <= 16 || qtePercent >= 24)
-                    {
-                        Debug.Log("QTE Good");
-                    }
-                    else 
-                    {
-                       Debug.Log("QTE Fail");
-                    }
-                    int random = Random.Range(1, 4);
-                    switch (random) 
-                    {
-                        case 1:
-                            keyToPress = KeyCode.A;
-                            keyText.text = "A";
-                            break;
-                        case 2:
-                            keyToPress = KeyCode.D;
-                            keyText.text = "D";
-                            break;
-                        case 3:
-                            keyToPress = KeyCode.W;
-                            keyText.text = "W";
-                            break;
-                    }
-                qteCount++;
-                } else 
-                {
-                    inputDetected = false;
+                    Debug.Log("QTE Perfect");
+                    //Instantiate(perfect);
                 }
+                else if (qtePercent <= 16 || qtePercent >= 24)
+                {
+                    Debug.Log("QTE Good");
+                    //Instantiate(good);
+                }
+                else
+                {
+                    Debug.Log("QTE Fail");
+                    //Instantiate(fail);
+                }
+                int random = Random.Range(1, 4);
+                switch (random)
+                {
+                    case 1:
+                        keyToPress = KeyCode.A;
+                        keyText.text = "A";
+                        break;
+                    case 2:
+                        keyToPress = KeyCode.D;
+                        keyText.text = "D";
+                        break;
+                    case 3:
+                        keyToPress = KeyCode.W;
+                        keyText.text = "W";
+                        break;
+                }
+                qteCount++;
+            }
+            else
+            {
+                inputDetected = false;
+            }
+        }
+        else if (qteCount == 3) 
+        {
+            keyText.gameObject.SetActive(false);
+            insideCircle.gameObject.SetActive(false);
+            outsideCircle.gameObject.SetActive(false);
+            qteFlag = false;
+            qteCount = 0;
         }
     }
 
@@ -128,6 +142,7 @@ public class rhythmGameUI : MonoBehaviour
 
     IEnumerator SetQTEFinishedNextFrame()
     {
+        Debug.Log("idk bro");
         yield return null; // wait 1 frame
         qteFinished = true;
     }
@@ -164,16 +179,18 @@ public class rhythmGameUI : MonoBehaviour
             DrawOutsideCircle(100, i);
             if (qteInput)
             {
-                qteInput = false;
-                QTEFinished();
-                yield break;
+                qteFinished = true;
+                //QTEFinished();
+                //yield break;
             }
             yield return new WaitForSeconds(waitTime * timingFactor);
         }
-        if (!qteFinished)
+        if (qteInput) 
         {
-            QTEFinished();
+            qteInput = false;
+            qteFinished = false;
         }
+            QTEFinished();
     }
 }
 

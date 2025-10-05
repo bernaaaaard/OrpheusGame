@@ -1748,6 +1748,18 @@ PrefabInstance:
       propertyPath: dialogueController
       value: 
       objectReference: {fileID: 6092189}
+    - target: {fileID: 1658250472762341612, guid: 548333e29add5c846a64fb25a159e5e5, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0.252
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658250472762341612, guid: 548333e29add5c846a64fb25a159e5e5, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658250472762341612, guid: 548333e29add5c846a64fb25a159e5e5, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 800
+      objectReference: {fileID: 0}
     - target: {fileID: 2069628612291353770, guid: 548333e29add5c846a64fb25a159e5e5, type: 3}
       propertyPath: m_margin.x
       value: -216.26605
