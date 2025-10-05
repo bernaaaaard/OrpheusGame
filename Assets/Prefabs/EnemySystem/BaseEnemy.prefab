@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 7614181562678415802}
   - component: {fileID: 886718096504210099}
   - component: {fileID: 1666247103116126961}
+  - component: {fileID: 7353797904355253786}
   m_Layer: 0
   m_Name: BaseEnemy
   m_TagString: Untagged
@@ -167,7 +168,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MeleeAttack
   damage: 1
-  attackRange: 2.5
+  attackDamageRange: 2.5
+  attackCooldown: 2
 --- !u!114 &7614181562678415802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,6 +183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
   sightRange: 10
+  attackRange: 3
 --- !u!195 &886718096504210099
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -230,3 +233,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7353797904355253786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7592391872342525983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a88a13dd553ef44f83aaad0e79888d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  maxHealth: 10
+  currentHealth: 10
