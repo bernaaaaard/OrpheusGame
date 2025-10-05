@@ -27,8 +27,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        if (_lamentationUIManager)
-        { 
+        if (_lamentationUIManager != null)
+        {
+            _lamentationUIManager.SetActiveLamentation();
             _lamentationUIManager.DisplayActiveLamentation();
         }
 

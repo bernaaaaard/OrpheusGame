@@ -8,9 +8,10 @@ public class LamentationUIManager : MonoBehaviour
     [Header("Lamentation References")]
 
     [SerializeField] GameObject lamentationPanel;
-    [SerializeField] TMP_Text lamentationTitle;
-    [SerializeField] TMP_Text lamentationDescription;
+    [SerializeField] TextMeshProUGUI lamentationTitle;
+    [SerializeField] TextMeshProUGUI lamentationDescription;
     [SerializeField] Image lamentationImage;
+    [SerializeField] Image activeLamentationImage;
     [SerializeField] Button lamentationButton;
 
 
@@ -24,26 +25,56 @@ public class LamentationUIManager : MonoBehaviour
 
     bool lamentationActivated = false;
 
+    private void Awake()
+    {
+        
+        
+        
+    }
+
     private void Start()
     {
-        LamentationSystem.instance.SelectRandomLamentation();
+        
+    }
+
+    public void SetActiveLamentation()
+    {
+        activeLamentation = LamentationSystem.instance.ActiveLamentation;
+        Debug.Log(activeLamentation.Description);
+        activeLamentationImage.enabled = false;
     }
 
     public void DisplayActiveLamentation()
     {
-        lamentationTitle.text = LamentationSystem.instance.ActiveLamentation.Title;
-        lamentationDescription.text = LamentationSystem.instance.ActiveLamentation.Description;
-        lamentationImage = LamentationSystem.instance.ActiveLamentation.Image;
-
         lamentationPanel.SetActive(true);
 
+        Debug.Log(activeLamentation);
+
+        if (activeLamentation)
+        {
+            lamentationTitle.text = activeLamentation.Title;
+            lamentationDescription.text = activeLamentation.Description;
+            lamentationImage.sprite = activeLamentation.Image;
+        }
+
         
+
+
+
+
     }
 
     public void StopDisplayingActiveLamentation()
     {
         lamentationPanel.SetActive(false);
+        activeLamentationImage.enabled = true;
 
+        if (activeLamentation)
+        {
+            activeLamentationImage.sprite = activeLamentation.Image;
+        }
+
+        
         lamentationActivated = true;
 
     }

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15105e11c024e954eaa147c99106d5ee, type: 3}
+  m_Name: AcceptanceEffect
+  m_EditorClassIdentifier: Assembly-CSharp::AcceptanceEffect
+  Title: Acceptance
+  Description: Become invulnerable while dashing
+  Image: {fileID: 2134689964, guid: d02d9a0dfb7ecf54e8711af40188868d, type: 3}

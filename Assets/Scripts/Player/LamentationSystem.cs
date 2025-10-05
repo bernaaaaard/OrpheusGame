@@ -5,14 +5,17 @@ public class LamentationSystem : MonoBehaviour
 {
     public static LamentationSystem instance;
     public List<LamentationSO> allLamentations = new List<LamentationSO>();
+    public List<LamentationEffect> allLamentationEffects = new List<LamentationEffect>();
 
     // public properties
 
     public LamentationSO ActiveLamentation => activeLamentation;
+    public LamentationEffect ActiveLamentationEffect => activeLamentationEffect;
 
     // private variables
 
     LamentationSO activeLamentation;
+    LamentationEffect activeLamentationEffect;
 
     void Awake()
     {
@@ -25,6 +28,8 @@ public class LamentationSystem : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        SelectRandomLamentation();
     }
 
     private void Start()
@@ -36,7 +41,12 @@ public class LamentationSystem : MonoBehaviour
     {
         if(allLamentations.Count < 1)
             return;
+
+        //if (allLamentationEffects.Count < 1)
+        //    return;
        
+
+
         int randomLamentationNo = Random.Range(0, allLamentations.Count);
 
         if (activeLamentation == allLamentations[randomLamentationNo])
@@ -44,12 +54,20 @@ public class LamentationSystem : MonoBehaviour
             SelectRandomLamentation();
         }
 
+        //else if (allLamentations[randomLamentationNo].Title != allLamentationEffects[randomLamentationNo].EffectName())
+        //{
+        //    SelectRandomLamentation();
+
+        //}
+
         else
         {
             activeLamentation = allLamentations[randomLamentationNo];
+            //activeLamentationEffect = allLamentationEffects[randomLamentationNo];
         }
 
-         
+       
+        
     }
 
 }
