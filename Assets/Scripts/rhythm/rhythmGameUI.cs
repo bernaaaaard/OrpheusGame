@@ -19,6 +19,8 @@ public class rhythmGameUI : MonoBehaviour
     public bool coroutineRunning = false;
     public bool qteFlag = false;
     public int qteCount;
+    public float timingFactor;
+    public float zz;
     void Start()
     {
         coroutineRunning = false;
@@ -36,8 +38,20 @@ public class rhythmGameUI : MonoBehaviour
     void Update()
     {
         waitTime = rhythmController.bps / 21f;
-        if (qteFinished && !coroutineRunning && qteFlag && qteCount < 3)
+        if (qteFinished && !coroutineRunning)
         {
+            timingFactor = Random.Range(1, 4);
+            switch (timingFactor) {
+                case 1:
+                    timingFactor = 0.5f;
+                    break;
+                case 2:
+                    timingFactor = 1f;
+                    break;
+                case 3:
+                    timingFactor = 2f;
+                    break;
+                }
             StartCoroutine(StartQTE(keyToPress));
             keyText.gameObject.SetActive(true);
             qteFinished = false;
@@ -100,10 +114,9 @@ public class rhythmGameUI : MonoBehaviour
 
             float x = xScaled * radius;
             float y = yScaled * radius;
+            Vector3 currentPosition = new Vector3((x * 10) + 400, (y * 10) +200, zz);
 
-            Vector3 currentPosition = new Vector3 (x, y, 0);
-
-            outsideCircle.SetPosition(i, currentPosition);
+        outsideCircle.SetPosition(i, currentPosition);
         }
     }
 
@@ -134,8 +147,7 @@ public class rhythmGameUI : MonoBehaviour
 
             float x = xScaled * radius;
             float y = yScaled * radius;
-
-            Vector3 currentPosition = new Vector3(x, y, 0);
+            Vector3 currentPosition = new Vector3((x * 10) + 400, (y * 10) + 200, zz);
 
             insideCircle.SetPosition(i, currentPosition);
         }
@@ -156,7 +168,7 @@ public class rhythmGameUI : MonoBehaviour
                 QTEFinished();
                 yield break;
             }
-            yield return new WaitForSeconds(waitTime);
+            yield return new WaitForSeconds(waitTime * timingFactor);
         }
         if (!qteFinished)
         {
