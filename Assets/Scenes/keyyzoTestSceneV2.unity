@@ -1061,6 +1061,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 651526771802792714, guid: 8d2dd44bc984d534288306af835694ce, type: 3}
+      propertyPath: Lens.OrthographicSize
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 651526771802792714, guid: 8d2dd44bc984d534288306af835694ce, type: 3}
       propertyPath: Target.TrackingTarget
       value: 
       objectReference: {fileID: 2060742384}
@@ -1070,15 +1074,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7495905930786069220, guid: 8d2dd44bc984d534288306af835694ce, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.123724
+      value: -12.247447
       objectReference: {fileID: 0}
     - target: {fileID: 7495905930786069220, guid: 8d2dd44bc984d534288306af835694ce, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.600001
+      value: 11.600001
       objectReference: {fileID: 0}
     - target: {fileID: 7495905930786069220, guid: 8d2dd44bc984d534288306af835694ce, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.123724
+      value: -12.247447
       objectReference: {fileID: 0}
     - target: {fileID: 7495905930786069220, guid: 8d2dd44bc984d534288306af835694ce, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1106,6 +1110,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7495905930786069220, guid: 8d2dd44bc984d534288306af835694ce, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8960785502297622501, guid: 8d2dd44bc984d534288306af835694ce, type: 3}
+      propertyPath: CameraDistance
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8960785502297622501, guid: 8d2dd44bc984d534288306af835694ce, type: 3}
+      propertyPath: TargetOffset.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8960785502297622501, guid: 8d2dd44bc984d534288306af835694ce, type: 3}
@@ -1478,15 +1490,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1139941280783804337, guid: bf288cdc1bff6384580e5eea20fdfb45, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.123724
+      value: -12.247447
       objectReference: {fileID: 0}
     - target: {fileID: 1139941280783804337, guid: bf288cdc1bff6384580e5eea20fdfb45, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.600001
+      value: 11.600001
       objectReference: {fileID: 0}
     - target: {fileID: 1139941280783804337, guid: bf288cdc1bff6384580e5eea20fdfb45, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.123724
+      value: -12.247447
       objectReference: {fileID: 0}
     - target: {fileID: 1139941280783804337, guid: bf288cdc1bff6384580e5eea20fdfb45, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1519,6 +1531,10 @@ PrefabInstance:
     - target: {fileID: 6508178074913506379, guid: bf288cdc1bff6384580e5eea20fdfb45, type: 3}
       propertyPath: m_Name
       value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 8566295742159867100, guid: bf288cdc1bff6384580e5eea20fdfb45, type: 3}
+      propertyPath: orthographic size
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2190,11 +2206,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 658946002941751552, guid: b2dbbb1d1406d084a96e07c6f2142db5, type: 3}
       propertyPath: m_Value
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 658946002941751552, guid: b2dbbb1d1406d084a96e07c6f2142db5, type: 3}
       propertyPath: m_MaxValue
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 658946002941751552, guid: b2dbbb1d1406d084a96e07c6f2142db5, type: 3}
       propertyPath: m_WholeNumbers
@@ -2318,11 +2334,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7846292926015234140, guid: b2dbbb1d1406d084a96e07c6f2142db5, type: 3}
       propertyPath: m_Value
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7846292926015234140, guid: b2dbbb1d1406d084a96e07c6f2142db5, type: 3}
       propertyPath: m_MaxValue
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7846292926015234140, guid: b2dbbb1d1406d084a96e07c6f2142db5, type: 3}
       propertyPath: m_WholeNumbers
@@ -2521,12 +2537,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LamentationSystem
   allLamentations:
-  - {fileID: 11400000, guid: 8c50d1e43ebd66949b27477caba48194, type: 2}
-  - {fileID: 11400000, guid: 8f2bcf8c573922445a1af2cb41f23acb, type: 2}
-  - {fileID: 11400000, guid: ca875bb71adb57c449a8a585846af824, type: 2}
-  - {fileID: 11400000, guid: ec38c128f7c918a4b9eaa5d40cdb9dd5, type: 2}
-  - {fileID: 11400000, guid: 6d608dd6eb1e8a640ac8c2296adc5948, type: 2}
-  - {fileID: 11400000, guid: 6f74ba7677871374c9371fb4844a61df, type: 2}
+  - {fileID: 11400000, guid: 9165d38ef701bc1429ab2d4587b030be, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   allLamentationEffects: []
 --- !u!1001 &2060742383
 PrefabInstance:

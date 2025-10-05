@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d288aafab458384db055a115708f3a3, type: 3}
-  m_Name: Bargaining
-  m_EditorClassIdentifier: Assembly-CSharp::LamentationSO
+  m_Script: {fileID: 11500000, guid: 031ff15373f2c3840a9690bbd5cc0e01, type: 3}
+  m_Name: BargainingEffect
+  m_EditorClassIdentifier: Assembly-CSharp::BargainingEffect
   Title: Bargaining
   Description: Half total health rounded down, No negative effects on powerups
-  Image: {fileID: -1719537034, guid: d02d9a0dfb7ecf54e8711af40188868d, type: 3}
+  Image: {fileID: 2134689964, guid: d02d9a0dfb7ecf54e8711af40188868d, type: 3}

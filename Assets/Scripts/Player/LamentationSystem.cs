@@ -40,9 +40,11 @@ public class LamentationSystem : MonoBehaviour
         if(allLamentations.Count < 1)
             return;
 
-        if (allLamentationEffects.Count < 1)
-            return;
+        //if (allLamentationEffects.Count < 1)
+        //    return;
        
+
+
         int randomLamentationNo = Random.Range(0, allLamentations.Count);
 
 
@@ -52,16 +54,16 @@ public class LamentationSystem : MonoBehaviour
             SelectRandomLamentation();
         }
 
-        else if (allLamentations[randomLamentationNo].Title != allLamentationEffects[randomLamentationNo].EffectName())
-        {
-            SelectRandomLamentation();
+        //else if (allLamentations[randomLamentationNo].Title != allLamentationEffects[randomLamentationNo].EffectName())
+        //{
+        //    SelectRandomLamentation();
 
-        }
+        //}
 
         else
         {
             activeLamentation = allLamentations[randomLamentationNo];
-            activeLamentationEffect = allLamentationEffects[randomLamentationNo];
+            //activeLamentationEffect = allLamentationEffects[randomLamentationNo];
         }
 
         

@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d288aafab458384db055a115708f3a3, type: 3}
-  m_Name: Denial
-  m_EditorClassIdentifier: Assembly-CSharp::LamentationSO
+  m_Script: {fileID: 11500000, guid: b3b93d2f3a4527149ac3366f006346ef, type: 3}
+  m_Name: DenialEffect
+  m_EditorClassIdentifier: Assembly-CSharp::DenialEffect
   Title: Denial
   Description: Every other attack dealt to player deals no damage
   Image: {fileID: -1940189741, guid: d02d9a0dfb7ecf54e8711af40188868d, type: 3}

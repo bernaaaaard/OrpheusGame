@@ -17,7 +17,8 @@ public class PlayerController : MonoBehaviour
 
     CharacterController _characterController;
 
-    LamentationEffect _activeLamentation;
+    //LamentationEffect _activeLamentation;
+    LamentationSO _activeLamentation;
 
     #endregion
 
@@ -173,7 +174,12 @@ public class PlayerController : MonoBehaviour
     {
         _canDash = true;
         _canFire = true;
-        _activeLamentation = LamentationSystem.instance.ActiveLamentationEffect;
+
+        if (_activeLamentation == null)
+        {
+            _activeLamentation = LamentationSystem.instance.ActiveLamentation;
+        }
+        
 
         CalculateDamageToGive();
         _activeLamentation.ApplyEffect(this.gameObject);

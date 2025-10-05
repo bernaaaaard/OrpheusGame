@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d288aafab458384db055a115708f3a3, type: 3}
-  m_Name: Acceptance
-  m_EditorClassIdentifier: Assembly-CSharp::LamentationSO
+  m_Script: {fileID: 11500000, guid: 15105e11c024e954eaa147c99106d5ee, type: 3}
+  m_Name: AcceptanceEffect
+  m_EditorClassIdentifier: Assembly-CSharp::AcceptanceEffect
   Title: Acceptance
-  Description: "Become invulnerable while dashing\t"
+  Description: Become invulnerable while dashing
   Image: {fileID: 2134689964, guid: d02d9a0dfb7ecf54e8711af40188868d, type: 3}

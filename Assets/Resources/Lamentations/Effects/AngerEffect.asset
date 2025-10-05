@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05eefc330622b4f46a9e296945201994, type: 3}
   m_Name: AngerEffect
   m_EditorClassIdentifier: Assembly-CSharp::AngerEffect
+  Title: Anger
+  Description: All damage you deal is doubled
+  Image: {fileID: 581617346, guid: d02d9a0dfb7ecf54e8711af40188868d, type: 3}
   Multiplier: 2
