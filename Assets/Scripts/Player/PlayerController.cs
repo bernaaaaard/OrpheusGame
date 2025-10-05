@@ -502,6 +502,16 @@ public class PlayerController : MonoBehaviour
 
                 lineRenderer.SetPosition(1, fireHit.point);
 
+                if (fireHit.collider.TryGetComponent(out UnitHealth enemyHealth))
+                {
+                    enemyHealth.DmgUnit(bulletDamage);
+                }
+
+                if (fireHit.collider.TryGetComponent(out Test_UnitHealth enemyUnit))
+                {
+                    enemyUnit.DmgUnit(bulletDamage);
+                }
+
             }
 
             else

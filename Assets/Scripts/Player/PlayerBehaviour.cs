@@ -33,7 +33,7 @@ public class PlayerBehaviour : MonoBehaviour
         _controls.PlayerMap.Disable();
     }
 
-    private void PlayerTakeDamage(int dmg)
+    public void PlayerTakeDamage(int dmg)
     {
         GameManager.gameManager._playerHealth.DmgUnit(dmg);
         if (GameManager.gameManager._playerHealth.Health > 0)
@@ -42,13 +42,13 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
-    private void PlayerHeal(int healing)
+    public void PlayerHeal(int healing)
     {
         GameManager.gameManager._playerHealth.HealUnit(healing);
         Debug.Log("Player healed! Current HP: " + GameManager.gameManager._playerHealth.Health);
     }
 
-    private void PlayerDie()
+    public void PlayerDie()
     {
         Debug.Log("💀 Player has died!");
 

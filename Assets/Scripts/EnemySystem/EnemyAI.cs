@@ -72,7 +72,7 @@ public class EnemyAI : MonoBehaviour
         {
             navAgent.isStopped = true;
         }
-        Debug.Log("Code is working here");
+       // Debug.Log("Code is working here");
         if (playerTransform != null && Vector3.Distance(transform.position, playerTransform.position) <= sightRange)
         {
             currentState = EnemyState.Chasing;
