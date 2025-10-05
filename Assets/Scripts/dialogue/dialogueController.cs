@@ -31,7 +31,9 @@ public class dialogueController : MonoBehaviour
 
     public npcPortraits npcPortraits;
 
-    private Dialogue[] dialogueArray = new Dialogue[66];
+    public Dialogue[] dialogueArray = new Dialogue[66];
+
+    private string npcSpeaking;
     void Start()
     {
         LoadDialogue(0);
@@ -44,7 +46,7 @@ public class dialogueController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W)) 
+        if (Input.GetKeyDown(KeyCode.I)) 
         {
             if (dialogueFinished)
             {
@@ -58,7 +60,6 @@ public class dialogueController : MonoBehaviour
             {
                 dialogueFinished = false;
             }
-            Debug.Log("dialogue finished = false;");
             dialogueFlag = false;
         }
     }
@@ -77,22 +78,21 @@ public class dialogueController : MonoBehaviour
             if (dialogueCount > 0)
             {
 
-                if (dialogueArray[dialogueCount - 1].character.Trim() == "Orpheus")
+                if (dialogueArray[dialogueCount - 1].portrait.Trim() != "Orpheus")
                 {
-                    npcPortraits.setPortrait("Char_Hermes_shaded");
+                    npcSpeaking = dialogueArray[dialogueCount - 1].portrait.Trim();
+                    npcPortraits.setPortrait("Char_" + dialogueArray[dialogueCount - 1].portrait.Trim());
                 }
                 else
                 {
-                    npcPortraits.setPortrait("Char_Hermes");
+                    npcPortraits.setPortrait("Char_" + npcSpeaking + "_shaded");
                 }
             }
         }
         else 
         {
-            Debug.Log("no more dialogue");
             dialogueCount = 0;
             dialogueFinished = true;
-            Debug.Log("Dialogue finished = true"); 
             dialogueFlag = false;
             if (currentConversation < 13)
             {
