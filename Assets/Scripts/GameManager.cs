@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -7,6 +8,8 @@ public class GameManager : MonoBehaviour
     public UnitHealth _playerHealth = new UnitHealth(3, 3);
 
     public AugmentUIManager _augmentUIManager;
+
+    public LamentationUIManager _lamentationUIManager;
 
     private void Awake()
     {
@@ -24,6 +27,20 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        _augmentUIManager.ShowCards();
+        if (_lamentationUIManager)
+        { 
+            _lamentationUIManager.DisplayActiveLamentation();
+        }
+
+        
+        
+    }
+
+    private void Update()
+    {
+        if (_augmentUIManager && _lamentationUIManager.LamentationActivated)
+        {
+            _augmentUIManager.ShowCards();
+        }
     }
 }
