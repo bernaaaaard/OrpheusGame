@@ -4,24 +4,36 @@ public class MeleeAttack : MonoBehaviour
 {
 
     public int damage = 1;
-    public float attackRange = 2.5f;
-    private Transform playerTransform;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public float attackDamageRange = 2.5f;
+     public float attackCooldown = 2f;
+    private float lastAttackTime;
+
     void Start()
     {
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        
     }
 
-    // Update is called once per frame
-    public void DealDamageToPlayer()
+  
+    public void PerformAttack()
     {
-        if (playerTransform != null && Vector3.Distance(transform.position, playerTransform.position) <= attackRange)
+        if (Time.time > lastAttackTime + attackCooldown)
         {
-            //UnitHealth targetHealth = playerTransform.GetComponent<UnitHealth>();
-            // if (targetHealth != null)
-            // {
-            //     targetHealth.DmgUnit(damage);
-            // }
+
+            GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+            if (playerObject != null)
+            {
+
+                if (Vector3.Distance(transform.position, playerObject.transform.position) <= attackDamageRange)
+                {
+
+                    if (playerObject.TryGetComponent<PlayerBehaviour>(out PlayerBehaviour player))
+                    {
+
+                        player.PlayerTakeDamage(damage);
+                    }
+                }
+            }
+            lastAttackTime = Time.time;
         }
     }
 }
