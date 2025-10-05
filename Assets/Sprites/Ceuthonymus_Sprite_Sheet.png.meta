@@ -1,0 +1,485 @@
+fileFormatVersion: 2
+guid: 2fcbd9ca1ef226f4f93ee1ca1629525c
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Ceuthonymus_Sprite_Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 3578
+        width: 285
+        height: 610
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 322b0f9b1e06ac04e98c3b7ca9fb845f
+      internalID: 1544287914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ceuthonymus_Sprite_Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 2889
+        width: 538
+        height: 631
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f12a3c1f49d69884aa5b436648ec445e
+      internalID: 39515193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ceuthonymus_Sprite_Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 2889
+        width: 539
+        height: 645
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf48478dd00c47b4ba08ee5937ccec2b
+      internalID: -1072475683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ceuthonymus_Sprite_Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 1479
+        y: 2929
+        width: 532
+        height: 613
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a2fee9c37c2c7c499cfbc93c8302f5e
+      internalID: 1365453530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ceuthonymus_Sprite_Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 2091
+        y: 2928
+        width: 553
+        height: 572
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a76989a359efd846aa5b1bd6a70bee9
+      internalID: 380503679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ceuthonymus_Sprite_Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 2276
+        width: 915
+        height: 581
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 117961f6d698a27438809b6d6e2b9b27
+      internalID: 220986417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ceuthonymus_Sprite_Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 1378
+        y: 2292
+        width: 467
+        height: 549
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7936daf1358656c4a83b3dfecbae97c7
+      internalID: 1834144982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ceuthonymus_Sprite_Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 1930
+        y: 2269
+        width: 317
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bc2d2ae2abe1634889d88186624d59d
+      internalID: -952488047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ceuthonymus_Sprite_Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 1484
+        width: 288
+        height: 596
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d95cbc597dba7f640a0641cb4b54e1b6
+      internalID: 1362981706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ceuthonymus_Sprite_Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 803
+        width: 556
+        height: 631
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99f266709abfd9f4b9842733866e3b95
+      internalID: -1921710637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ceuthonymus_Sprite_Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 758
+        y: 834
+        width: 540
+        height: 598
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ea546d36ad848945b5cfe012823acdc
+      internalID: -1857565315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ceuthonymus_Sprite_Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 1349
+        y: 879
+        width: 554
+        height: 584
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfb83f16f05366d49bad5d007ab74552
+      internalID: -705353759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ceuthonymus_Sprite_Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 1957
+        y: 887
+        width: 531
+        height: 579
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc62b5bb6615f494391fbe39290fba6a
+      internalID: -254141441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ceuthonymus_Sprite_Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 191
+        width: 971
+        height: 529
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d72adb64b918c3141a3cec981795dce9
+      internalID: -514785970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ceuthonymus_Sprite_Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 1410
+        y: 164
+        width: 312
+        height: 518
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af3423b47b4151d4e9b9a3237aaef629
+      internalID: -140313612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ceuthonymus_Sprite_Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 1943
+        y: 169
+        width: 308
+        height: 518
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cd94b593d1115f4499497be2f09d345
+      internalID: -170508641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 95865c34801db4646a43c1ed9f4b8270
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Ceuthonymus_Sprite_Sheet_0: 1544287914
+      Ceuthonymus_Sprite_Sheet_1: 39515193
+      Ceuthonymus_Sprite_Sheet_10: -1857565315
+      Ceuthonymus_Sprite_Sheet_11: -705353759
+      Ceuthonymus_Sprite_Sheet_12: -254141441
+      Ceuthonymus_Sprite_Sheet_13: -514785970
+      Ceuthonymus_Sprite_Sheet_14: -140313612
+      Ceuthonymus_Sprite_Sheet_15: -170508641
+      Ceuthonymus_Sprite_Sheet_2: -1072475683
+      Ceuthonymus_Sprite_Sheet_3: 1365453530
+      Ceuthonymus_Sprite_Sheet_4: 380503679
+      Ceuthonymus_Sprite_Sheet_5: 220986417
+      Ceuthonymus_Sprite_Sheet_6: 1834144982
+      Ceuthonymus_Sprite_Sheet_7: -952488047
+      Ceuthonymus_Sprite_Sheet_8: 1362981706
+      Ceuthonymus_Sprite_Sheet_9: -1921710637
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
