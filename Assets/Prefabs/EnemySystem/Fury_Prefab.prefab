@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 3197319186652904066}
   - component: {fileID: 9174644800781402827}
   - component: {fileID: 1673398978546600782}
-  - component: {fileID: 3128196009120168334}
   - component: {fileID: 2600624496687491969}
   - component: {fileID: 7020798379555230980}
   - component: {fileID: 549364701189542712}
+  - component: {fileID: 8333416224378368702}
   m_Layer: 0
   m_Name: Fury_Prefab
   m_TagString: Untagged
@@ -140,19 +140,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3128196009120168334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7633750147444409425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acbb10f90a539fe4790ce14dc2946c26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Test_UnitHealth
-  maxHealth: 10
 --- !u!114 &2600624496687491969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,4 +204,18 @@ MonoBehaviour:
   duration: 0.2
   playerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
+--- !u!114 &8333416224378368702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7633750147444409425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a88a13dd553ef44f83aaad0e79888d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  maxHealth: 10
+  currentHealth: 10

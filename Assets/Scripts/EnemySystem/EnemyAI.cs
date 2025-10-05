@@ -1,5 +1,3 @@
-using Unity.VisualScripting.ReorderableList;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -111,6 +109,7 @@ public class EnemyAI : MonoBehaviour
             }
 
         transform.LookAt(playerTransform);
+        
 
 
         Debug.Log("Attacking!");
@@ -118,9 +117,9 @@ public class EnemyAI : MonoBehaviour
 
         if (meleeAttack != null)
         {
-            //meleeAttack.PerformAttack(playerTransform.gameObject);
+            meleeAttack.PerformAttack();
         }
-        if (projectileAttack != null)
+        else if (projectileAttack != null)
         {
             projectileAttack.PerformAttack(playerTransform.gameObject);
         }

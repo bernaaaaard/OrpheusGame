@@ -11,13 +11,15 @@ public class Projectile : MonoBehaviour
   
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Projectile hit something named: " + collision.gameObject.name);
-        
-        if (collision.gameObject.TryGetComponent<Test_UnitHealth>(out Test_UnitHealth health))
+         if (collision.gameObject.CompareTag("Player"))
         {
-            health.DmgUnit(1);
+            
+            if (collision.gameObject.TryGetComponent<PlayerBehaviour>(out PlayerBehaviour player))
+            {
+                
+                player.PlayerTakeDamage(1); 
+            }
         }
-
         
         Destroy(gameObject);
     }
