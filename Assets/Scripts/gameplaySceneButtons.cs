@@ -14,5 +14,9 @@ public class gameplaySceneButtons : MonoBehaviour
             gameStateController.paused = false;
             Debug.Log("no longer paused");
         }
+        if (transform.name == "RespawnButton") 
+        {
+            //input respawn scene
+        }
     }
 }

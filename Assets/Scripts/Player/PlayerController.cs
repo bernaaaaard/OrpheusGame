@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
 
     CharacterController _characterController;
 
+    //LamentationEffect _activeLamentation;
+    LamentationSO _activeLamentation;
+
     #endregion
 
     [Space(5)]
@@ -171,6 +174,21 @@ public class PlayerController : MonoBehaviour
     {
         _canDash = true;
         _canFire = true;
+
+        if (_activeLamentation == null)
+        {
+            _activeLamentation = LamentationSystem.instance.ActiveLamentation;
+        }
+        
+
+        CalculateDamageToGive();
+
+        if (_activeLamentation)
+        {
+            _activeLamentation.ApplyEffect(this);
+        }
+        
+
     }
 
     private void Update()
@@ -502,14 +520,19 @@ public class PlayerController : MonoBehaviour
 
                 lineRenderer.SetPosition(1, fireHit.point);
 
-                if (fireHit.collider.TryGetComponent(out UnitHealth enemyHealth))
-                {
-                    enemyHealth.DmgUnit(bulletDamage);
-                }
+                //if (fireHit.collider.TryGetComponent(out UnitHealth enemyHealth))
+                //{
+                //    enemyHealth.DmgUnit(bulletDamage);
+                //}
 
-                if (fireHit.collider.TryGetComponent(out Test_UnitHealth enemyUnit))
+                //if (fireHit.collider.TryGetComponent(out Test_UnitHealth enemyUnit))
+                //{
+                //    enemyUnit.DmgUnit(bulletDamage);
+                //}
+
+                if (fireHit.collider.TryGetComponent<EnemyHealth>(out EnemyHealth enemyUnit))
                 {
-                    enemyUnit.DmgUnit(bulletDamage);
+                    enemyUnit.TakeDamage(bulletDamage);
                 }
 
             }
@@ -522,6 +545,12 @@ public class PlayerController : MonoBehaviour
 
         
     }
+
+    public void CalculateDamageToGive(int damageMultiplier = 1)
+    {
+        bulletDamage *= damageMultiplier;
+    }
+
 
     IEnumerator FiringRoutine()
     {
@@ -566,6 +595,12 @@ public class PlayerController : MonoBehaviour
         _canDash = true;
         
     }
+
+    #endregion
+
+    #region Other Functions (Lamentations and things)
+
+    
 
     #endregion
 }

@@ -9,5 +9,5 @@ It seems to be running a Protocol Relay: Subterranean Processing & Hosting Netwo
 Orpheus
 But I'm having a hard time validating the certificates.
 Hrm35
-“I told you, those security certificates are tough nuts to crack,/especially on those ancient PR:SPHN’s
+“I told you, those security certificates are tough nuts to crack, especially on those ancient PR:SPHN’s
 Orpheus
