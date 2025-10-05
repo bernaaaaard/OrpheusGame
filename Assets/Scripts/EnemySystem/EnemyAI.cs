@@ -35,7 +35,7 @@ public class EnemyAI : MonoBehaviour
 
 
 
-    void Start()
+    protected virtual void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         currentState = EnemyState.Idle;
