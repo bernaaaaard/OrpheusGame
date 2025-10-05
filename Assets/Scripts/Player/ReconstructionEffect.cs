@@ -30,12 +30,12 @@ public class ReconstructionEffect : LamentationSO
     float outOfCombatTimer = 0.0f;
     float healingTimer = 0.0f;
 
-    public override void ApplyEffect(GameObject playerObj)
+    public override void ApplyEffect(MonoBehaviour playerObj)
     {
-        
+        EnemyDetection(playerObj);
     }
 
-    void SetupRangeDetector(GameObject playerObj)
+    void SetupRangeDetector(MonoBehaviour playerObj)
     {
         _sphereCollider = new SphereCollider();
         _sphereCollider.center = playerObj.transform.position;
@@ -44,15 +44,13 @@ public class ReconstructionEffect : LamentationSO
 
     }
 
-    void EnemyDetection(GameObject playerObj)
+    void EnemyDetection(MonoBehaviour playerObj)
     {
-        if (Physics.SphereCast(playerObj.transform.position, enemyDetectedRange, playerObj.transform.forward, out RaycastHit hitInfo))
-        { 
-            
-        }
+        playerObj.StartCoroutine(EnemyDetectionRoutine(playerObj));
+        playerObj.StartCoroutine(HealingTimerRoutine(playerObj));
     }
 
-    IEnumerator EnemyDetectionRoutine(GameObject playerObj)
+    IEnumerator EnemyDetectionRoutine(MonoBehaviour playerObj)
     {
         while (true)
         {
@@ -66,14 +64,16 @@ public class ReconstructionEffect : LamentationSO
                 }
 
                 else
-                { 
-                    
+                {
+                    _isEnemyNear = false;
                 }
             }
+
+            yield return null;
         }
     }
 
-    IEnumerator HealingTimerRoutine(GameObject playerObj)
+    IEnumerator HealingTimerRoutine(MonoBehaviour playerObj)
     {
         while (true)
         {
@@ -96,6 +96,10 @@ public class ReconstructionEffect : LamentationSO
                     
                 }
             }
+
+            yield return null;
         }
+
+        
     }
 }

@@ -2538,7 +2538,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LamentationSystem
   allLamentations:
   - {fileID: 11400000, guid: 9165d38ef701bc1429ab2d4587b030be, type: 2}
-  - {fileID: 11400000, guid: 9165d38ef701bc1429ab2d4587b030be, type: 2}
+  - {fileID: 11400000, guid: 54209e3eac400c949b7940ef9a29fa91, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   allLamentationEffects: []
 --- !u!1001 &2060742383
 PrefabInstance:

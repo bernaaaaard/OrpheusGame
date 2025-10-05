@@ -182,7 +182,12 @@ public class PlayerController : MonoBehaviour
         
 
         CalculateDamageToGive();
-        _activeLamentation.ApplyEffect(this.gameObject);
+
+        if (_activeLamentation)
+        {
+            _activeLamentation.ApplyEffect(this);
+        }
+        
 
     }
 

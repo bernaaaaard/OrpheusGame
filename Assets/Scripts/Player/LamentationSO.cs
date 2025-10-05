@@ -9,7 +9,7 @@ public abstract class LamentationSO : ScriptableObject
     public string Description;
     public Sprite Image;
 
-    public virtual void ApplyEffect(GameObject playerObj)
+    public virtual void ApplyEffect(MonoBehaviour playerObj)
     {
 
     }

@@ -10,8 +10,11 @@ public class AngerEffect : LamentationSO
     //    return "Anger";
     //}
 
-    public override void ApplyEffect(GameObject playerObj)
+    public override void ApplyEffect(MonoBehaviour playerObj)
     {
-        playerObj?.GetComponent<PlayerController>().CalculateDamageToGive(Multiplier);
+        if (playerObj)
+        { 
+            playerObj.gameObject.GetComponent<PlayerController>().CalculateDamageToGive(Multiplier);
+        }
     }
 }

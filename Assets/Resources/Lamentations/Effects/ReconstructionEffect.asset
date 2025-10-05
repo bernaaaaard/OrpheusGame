@@ -15,3 +15,7 @@ MonoBehaviour:
   Title: Reconstruction
   Description: Passively heal while not in combat
   Image: {fileID: -1190394546, guid: d02d9a0dfb7ecf54e8711af40188868d, type: 3}
+  outOfCombatTimerLength: 10
+  healingTimerLength: 8
+  enemyDetectedRange: 10
+  timeBetweenRoutineRuns: 0.2

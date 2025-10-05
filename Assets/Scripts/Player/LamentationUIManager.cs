@@ -27,13 +27,20 @@ public class LamentationUIManager : MonoBehaviour
 
     private void Awake()
     {
-        LamentationSystem.instance.SelectRandomLamentation();
-        activeLamentation = LamentationSystem.instance.ActiveLamentation;
-        Debug.Log(activeLamentation.Description);
+        
+        
+        
     }
 
     private void Start()
     {
+        
+    }
+
+    public void SetActiveLamentation()
+    {
+        activeLamentation = LamentationSystem.instance.ActiveLamentation;
+        Debug.Log(activeLamentation.Description);
         activeLamentationImage.enabled = false;
     }
 
@@ -41,9 +48,16 @@ public class LamentationUIManager : MonoBehaviour
     {
         lamentationPanel.SetActive(true);
 
-        lamentationTitle.text = activeLamentation.Title;
-        lamentationDescription.text = activeLamentation.Description;
-        lamentationImage.sprite = activeLamentation.Image;
+        Debug.Log(activeLamentation);
+
+        if (activeLamentation)
+        {
+            lamentationTitle.text = activeLamentation.Title;
+            lamentationDescription.text = activeLamentation.Description;
+            lamentationImage.sprite = activeLamentation.Image;
+        }
+
+        
 
 
 
@@ -54,7 +68,13 @@ public class LamentationUIManager : MonoBehaviour
     {
         lamentationPanel.SetActive(false);
         activeLamentationImage.enabled = true;
-        activeLamentationImage.sprite = activeLamentation.Image;
+
+        if (activeLamentation)
+        {
+            activeLamentationImage.sprite = activeLamentation.Image;
+        }
+
+        
         lamentationActivated = true;
 
     }
