@@ -54,17 +54,48 @@ public class ReconstructionEffect : LamentationSO
     {
         while (true)
         {
-            if (Physics.SphereCast(playerObj.transform.position, enemyDetectedRange, playerObj.transform.forward, out RaycastHit hitInfo))
+            // Old method, will keep incase its needed
+
+            //if (Physics.SphereCast(playerObj.transform.position, enemyDetectedRange, playerObj.transform.forward, out RaycastHit hitInfo))
+            //{
+            //    if (hitInfo.collider.TryGetComponent<EnemyAI>(out EnemyAI enemy))
+            //    {
+            //        Debug.Log("Enemy detected!");
+
+            //        _isEnemyNear = true;
+            //        outOfCombatTimer = 0.0f;
+            //        healingTimer = healingTimerLength;
+            //    }
+
+            //    else
+            //    {
+            //        Debug.Log("Out of range of enemies!");
+            //        _isEnemyNear = false;
+            //    }
+            //}
+
+
+            Collider[] numOfColliders = Physics.OverlapSphere(playerObj.transform.position, enemyDetectedRange);
+
+            int numOfEnemies = 0;
+
+            foreach (Collider collider in numOfColliders)
             {
-                if (hitInfo.collider.TryGetComponent<EnemyAI>(out EnemyAI enemy))
+
+                if (collider.TryGetComponent<EnemyAI>(out EnemyAI enemy))
                 {
+                    numOfEnemies += 1;
+
+                    Debug.Log("Enemy detected!");
+
                     _isEnemyNear = true;
                     outOfCombatTimer = 0.0f;
                     healingTimer = healingTimerLength;
                 }
 
-                else
+                else if(numOfColliders.Length < 1 || numOfEnemies < 1)
                 {
+                    Debug.Log("Out of range of enemies!");
                     _isEnemyNear = false;
                 }
             }
@@ -79,12 +110,14 @@ public class ReconstructionEffect : LamentationSO
         {
             if (_isEnemyNear == false)
             {
+                Debug.Log("Out of range timer started");
                 outOfCombatTimer += Time.deltaTime;
 
                 if (outOfCombatTimer >= outOfCombatTimerLength)
                 {
                     if (healingTimer >= healingTimerLength && GameManager.gameManager._playerHealth.Health < GameManager.gameManager._playerHealth.MaxHealth)
                     {
+                        Debug.Log("Healed 1 point!");
                         playerObj.GetComponent<PlayerBehaviour>().PlayerHeal(1);
                         healingTimer = 0.0f;
                     }

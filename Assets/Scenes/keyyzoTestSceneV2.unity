@@ -1725,6 +1725,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4201980174742396858, guid: c6e054ca3055cc84c9a522e9e75f46fc, type: 3}
+      propertyPath: 'allLamentations.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 5203b78541b05354c9c9700c6a2b678d, type: 2}
     - target: {fileID: 6327319765552599485, guid: c6e054ca3055cc84c9a522e9e75f46fc, type: 3}
       propertyPath: m_Name
       value: LamentationSystem
