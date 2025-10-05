@@ -24,4 +24,25 @@ public class ProgressionSystem : MonoBehaviour
         acquiredCards.Add(card);
         Debug.Log("Card added: " + card.name);
     }
+
+    public bool HasCard(string cardNameToCheck)
+    {
+        foreach (Card card in acquiredCards)
+        {
+            if (card.name == cardNameToCheck)
+            {
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+    
+    public void RemoveAllCards()
+    {
+        
+        acquiredCards.Clear();
+        
+    }
 }
