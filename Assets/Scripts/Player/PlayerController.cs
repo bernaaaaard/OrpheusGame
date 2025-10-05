@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
 
     CharacterController _characterController;
 
+    LamentationEffect _activeLamentation;
+
     #endregion
 
     [Space(5)]
@@ -171,6 +173,11 @@ public class PlayerController : MonoBehaviour
     {
         _canDash = true;
         _canFire = true;
+        _activeLamentation = LamentationSystem.instance.ActiveLamentationEffect;
+
+        CalculateDamageToGive();
+        _activeLamentation.ApplyEffect(this.gameObject);
+
     }
 
     private void Update()
@@ -528,6 +535,12 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    public void CalculateDamageToGive(int damageMultiplier = 1)
+    {
+        bulletDamage *= damageMultiplier;
+    }
+
+
     IEnumerator FiringRoutine()
     {
         _canFire = false;
@@ -571,6 +584,12 @@ public class PlayerController : MonoBehaviour
         _canDash = true;
         
     }
+
+    #endregion
+
+    #region Other Functions (Lamentations and things)
+
+    
 
     #endregion
 }

@@ -2527,6 +2527,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ec38c128f7c918a4b9eaa5d40cdb9dd5, type: 2}
   - {fileID: 11400000, guid: 6d608dd6eb1e8a640ac8c2296adc5948, type: 2}
   - {fileID: 11400000, guid: 6f74ba7677871374c9371fb4844a61df, type: 2}
+  allLamentationEffects: []
 --- !u!1001 &2060742383
 PrefabInstance:
   m_ObjectHideFlags: 0
