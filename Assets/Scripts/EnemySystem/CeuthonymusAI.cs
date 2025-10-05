@@ -1,77 +1,106 @@
-using UnityEngine;
-using UnityEngine.AI;
 using System.Collections;
-using UnityEditor.Rendering;
+using UnityEngine;
 
-public class CeuthonymusAI : MonoBehaviour
+public class CeuthonymusAI : EnemyAI
 {
-    [Header("Teleport Settings")]
-    public float teleportRange = 10f;
+    [Header("Ceuthonymus Settings")]
     public float teleportCooldown = 5f;
-    public float minTeleportDistance = 3f;
+    public float teleportDistanceFromPlayer = 3f;
 
-     public float sightRange = 10f;
-    public float attackRange = 3f;
+    [Header("Attack Ranges")]
+    public float slashRange = 2f;
+    public float projectileRange = 8f;
 
-    public float teleportHeight = 0.5f;
+    private float lastTeleportTime;
 
-    private NavMeshAgent agent;
-    private Transform playerTransform;
-    private bool canTeleport = true;
+    private CSlashAttack slashAttack;
+    private CProjectileAttack cprojectileAttack;
 
-    void Awake()
+    private bool isTeleporting = false;
+
+    protected override void Awake()
     {
-        agent = GetComponent<NavMeshAgent>();
+        base.Awake();
+        slashAttack = GetComponent<CSlashAttack>();
+        cprojectileAttack = GetComponent<CProjectileAttack>();
     }
 
-    void Start()
+    protected override void UpdateChasingState()
     {
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-    }
+        if (playerTransform == null || isTeleporting) return;
 
-    void Update()
-    {
+        Vector3 lookPos = playerTransform.position - transform.position;
+        lookPos.y = 0;
+        transform.rotation = Quaternion.LookRotation(lookPos);
 
-        if (canTeleport && Vector3.Distance(transform.position, playerTransform.position) < minTeleportDistance)
-        {
-            StartCoroutine(TeleportRoutine());
-        }
-    }
+        float distance = Vector3.Distance(transform.position, playerTransform.position);
 
-    IEnumerator TeleportRoutine()
-    {
-        canTeleport = false;
-
-
-        Vector3 randomDirection = Random.insideUnitSphere * teleportRange;
-        randomDirection += transform.position;
-
-
-        if (NavMesh.SamplePosition(randomDirection, out NavMeshHit hit, teleportRange, NavMesh.AllAreas))
-        {
-
-            yield return new WaitForSeconds(0.2f);
-
-            Vector3 newPos = hit.position + Vector3.up ;
-            transform.position = hit.position;
-
-
-        }
-
-        yield return new WaitForSeconds(teleportCooldown);
-        canTeleport = true;
-    }
-    
-    private void OnDrawGizmosSelected()
-    {
         
-        Gizmos.color = Color.yellow;
-      
-        Gizmos.DrawWireSphere(transform.position, teleportRange);
+        if (Time.time - lastTeleportTime >= teleportCooldown)
+        {
+            StartCoroutine(TeleportAndSlash());
+            lastTeleportTime = Time.time;
+            return;
+        }
 
        
-        Gizmos.color = Color.red;
+        if (distance <= slashRange)
+        {
+            slashAttack?.PerformSlash();
+        }
+       
+        else if (distance <= projectileRange)
+        {
+            cprojectileAttack?.PerformAttack(playerTransform);
+        }
+    }
+
+    private IEnumerator TeleportAndSlash()
+    {
+        isTeleporting = true;
+
+       
+        Debug.Log("Ceuthonymus preparing to teleport...");
+        yield return new WaitForSeconds(0.5f);
+
         
-        Gizmos.DrawWireSphere(transform.position, minTeleportDistance);
+        Vector3 dirToPlayer = (playerTransform.position - transform.position).normalized;
+        Vector3 teleportPosition = playerTransform.position - dirToPlayer * teleportDistanceFromPlayer;
+
+       
+        teleportPosition.y = transform.position.y;
+        transform.position = teleportPosition;
+
+        Debug.Log("Ceuthonymus teleported near player!");
+
+        
+        slashAttack?.PerformSlash();
+
+        yield return new WaitForSeconds(1f); 
+        isTeleporting = false;
+    }
+
+
+    private void OnDrawGizmosSelected()
+    {
+       
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, slashRange);
+
+        
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, projectileRange);
+
+        
+        Gizmos.color = new Color(0.6f, 0f, 0.6f, 1f); 
+        Gizmos.DrawWireSphere(transform.position, teleportDistanceFromPlayer);
+
+        Gizmos.color = Color.yellow;
+      
+        Gizmos.DrawWireSphere(transform.position, sightRange);
+
+
+       
+
     }
 }

@@ -13,10 +13,11 @@ GameObject:
   - component: {fileID: 2661595537398840267}
   - component: {fileID: 2264753761278683205}
   - component: {fileID: 3391969645498955297}
-  - component: {fileID: 122247410803897886}
   - component: {fileID: 6919907135277988139}
   - component: {fileID: 5130739475413311264}
   - component: {fileID: 7694628691568031336}
+  - component: {fileID: 3918922720715742916}
+  - component: {fileID: 4697776266419609786}
   m_Layer: 0
   m_Name: Ceuthonymus
   m_TagString: Untagged
@@ -38,6 +39,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1157941433511621668}
+  - {fileID: 6369685765301461962}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3762377827653281270
@@ -141,28 +143,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!195 &122247410803897886
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 297793387099081672}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 10
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 1
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!54 &6919907135277988139
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -216,9 +196,112 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eee7ac1c1528284d8ad55e391382033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CeuthonymusAI
-  teleportRange: 10
+  sightRange: 10
+  attackRange: 3
   teleportCooldown: 5
-  minTeleportDistance: 3
+  teleportDistanceFromPlayer: 2
+  slashRange: 2
+  projectileRange: 8
+--- !u!114 &3918922720715742916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297793387099081672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b3e4aaf29ac28845a4de0fbc84e079c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CSlashAttack
+  slashHitbox: {fileID: 6550658138080983252}
+  damage: 2
+  slashDuration: 0.5
+  cooldown: 2
+--- !u!114 &4697776266419609786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297793387099081672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45f93de09ad6b394fa20da254eb6ebf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CProjectileAttack
+  projectilePrefab: {fileID: 7600193051146352051, guid: d8931c5638bda8d40a55d2656f05e1ce, type: 3}
+  firePoint: {fileID: 1157941433511621668}
+  cooldown: 3
+  projectileSpeed: 10
+  spreadAngle: 15
+--- !u!1 &4220697060195845344
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6369685765301461962}
+  - component: {fileID: 6550658138080983252}
+  - component: {fileID: 6924870948318872565}
+  m_Layer: 0
+  m_Name: SlashHitBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &6369685765301461962
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4220697060195845344}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7912869516815674681}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6550658138080983252
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4220697060195845344}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3, y: 2, z: 2}
+  m_Center: {x: 0, y: 0, z: 1.5}
+--- !u!114 &6924870948318872565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4220697060195845344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 587c5c6146e831a41ab6132d049865ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CSlashHitbox
+  damage: 5
 --- !u!1 &6388775880715432399
 GameObject:
   m_ObjectHideFlags: 0
