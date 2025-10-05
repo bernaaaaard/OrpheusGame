@@ -10,7 +10,14 @@ public class npcPortraits : MonoBehaviour
         {
             Texture2D portraitSprite = Resources.Load<Texture2D>(portrait);
             gameObject.GetComponent<UnityEngine.UI.Image>().sprite = Sprite.Create(portraitSprite, new Rect(0, 0, portraitSprite.width, portraitSprite.height), Vector2.one * 0.5f);
-            gameObject.transform.localScale = new Vector2(2, 2);
+            if (portrait.Contains("Hrm35"))
+            {
+                gameObject.transform.localScale = new Vector2(1.5f, 2);
+            }
+            else
+            {
+                gameObject.transform.localScale = new Vector2(1, 2);
+            }
         }
         else 
         {

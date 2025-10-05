@@ -11,7 +11,7 @@ public class orpheusPortrait : MonoBehaviour
         {
             Texture2D portraitSprite = Resources.Load<Texture2D>("Char_Orpheus");
             gameObject.GetComponent<UnityEngine.UI.Image>().sprite = Sprite.Create(portraitSprite, new Rect(0, 0, portraitSprite.width, portraitSprite.height), Vector2.one * 0.5f);
-            gameObject.transform.localScale = new Vector2(2, 2);
+            gameObject.transform.localScale = new Vector2(1, 2);
         }
         else
         {
@@ -25,13 +25,13 @@ public class orpheusPortrait : MonoBehaviour
         {
             Texture2D portraitSprite = Resources.Load<Texture2D>("Char_Orpheus");
             gameObject.GetComponent<UnityEngine.UI.Image>().sprite = Sprite.Create(portraitSprite, new Rect(0, 0, portraitSprite.width, portraitSprite.height), Vector2.one * 0.5f);
-            gameObject.transform.localScale = new Vector2(2, 2);
+            gameObject.transform.localScale = new Vector2(1, 2);
         }
         else
         {
             Texture2D portraitSprite = Resources.Load<Texture2D>("Char_Orpheus_Shaded");
             gameObject.GetComponent<UnityEngine.UI.Image>().sprite = Sprite.Create(portraitSprite, new Rect(0, 0, portraitSprite.width, portraitSprite.height), Vector2.one * 0.5f);
-            gameObject.transform.localScale = new Vector2(2, 2);
+            gameObject.transform.localScale = new Vector2(1, 2);
         }
     }
 }
