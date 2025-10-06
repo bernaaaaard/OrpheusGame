@@ -6,12 +6,20 @@ public class PlayerBehaviour : MonoBehaviour
     private OrpheusControls _controls;
     public GameObject deathMenu;
 
+    int timesTookDamage;
+    int timesTookDamageMax;
+    int damageToTakeAmount;
+
+    bool isDenialActive = false;
+
     private void Start()
     {
         if (GameManager.gameManager != null)
             GameManager.gameManager._playerHealth.OnDeath += PlayerDie;
         else
             Debug.LogError("GameManager is missing");
+
+        timesTookDamage = 0;
     }
 
 
@@ -36,10 +44,18 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void PlayerTakeDamage(int dmg)
     {
-        GameManager.gameManager._playerHealth.DmgUnit(dmg);
-        if (GameManager.gameManager._playerHealth.Health > 0)
+        if (!AcceptanceEffect.invuln)
         {
-            Debug.Log("Player took damage! Current HP: " + GameManager.gameManager._playerHealth.Health);
+            damageToTakeAmount = dmg;
+            timesTookDamage += 1;
+
+            CalculateAttackMiss();
+
+            GameManager.gameManager._playerHealth.DmgUnit(damageToTakeAmount);
+            if (GameManager.gameManager._playerHealth.Health > 0)
+            {
+                Debug.Log("Player took damage! Current HP: " + GameManager.gameManager._playerHealth.Health);
+            }
         }
     }
 
@@ -58,4 +74,32 @@ public class PlayerBehaviour : MonoBehaviour
         deathMenu.SetActive(true);
     }
 
+    public void CalculateAttackMiss(int attacksBeforeMiss = 0)
+    {
+        if (attacksBeforeMiss == 0)
+            return;
+
+        if (attacksBeforeMiss > 0)
+        {
+            timesTookDamageMax = attacksBeforeMiss;
+
+            isDenialActive = true;
+
+            
+        }
+    }
+
+    void CalculateAttackMiss()
+    {
+        if (isDenialActive)
+        {
+            if (timesTookDamage > timesTookDamageMax)
+            {
+                damageToTakeAmount = 0;
+                Debug.Log("Attack dodged!");
+                timesTookDamage = 0;
+            }
+        }
+    }
+    
 }
