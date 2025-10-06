@@ -44,15 +44,18 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void PlayerTakeDamage(int dmg)
     {
-        damageToTakeAmount = dmg;
-        timesTookDamage += 1;
-
-        CalculateAttackMiss();
-
-        GameManager.gameManager._playerHealth.DmgUnit(damageToTakeAmount);
-        if (GameManager.gameManager._playerHealth.Health > 0)
+        if (!AcceptanceEffect.invuln)
         {
-            Debug.Log("Player took damage! Current HP: " + GameManager.gameManager._playerHealth.Health);
+            damageToTakeAmount = dmg;
+            timesTookDamage += 1;
+
+            CalculateAttackMiss();
+
+            GameManager.gameManager._playerHealth.DmgUnit(damageToTakeAmount);
+            if (GameManager.gameManager._playerHealth.Health > 0)
+            {
+                Debug.Log("Player took damage! Current HP: " + GameManager.gameManager._playerHealth.Health);
+            }
         }
     }
 
