@@ -13,6 +13,7 @@ public class LamentationUIManager : MonoBehaviour
     [SerializeField] Image lamentationImage;
     [SerializeField] Image activeLamentationImage;
     [SerializeField] Button lamentationButton;
+    public DialogueQueues dialogue;
 
 
     // public properties
@@ -76,6 +77,6 @@ public class LamentationUIManager : MonoBehaviour
 
         
         lamentationActivated = true;
-
+        dialogue.convo1();
     }
 }

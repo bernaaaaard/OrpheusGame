@@ -19,7 +19,7 @@ public class dialogueController : MonoBehaviour
     private float textSpeed = 0.005f;
     public TextAsset dialogueText;
     public int currentDialogue;
-    public int currentConversation;
+    public float currentConversation;
 
     public Color char1norm;
     public Color char2norm;
@@ -123,7 +123,7 @@ public class dialogueController : MonoBehaviour
         dialogueFinished = true;
     }
 
-    void LoadDialogue(int dialogueNum) 
+    void LoadDialogue(float dialogueNum) 
     {
         currentDialogue = 0;
         dialogueText = Resources.Load<TextAsset>("dialogue/dlg" + dialogueNum);

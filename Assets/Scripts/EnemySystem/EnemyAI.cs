@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class EnemyAI : MonoBehaviour
     private MeleeAttack meleeAttack;
     private ProjectileAttack projectileAttack;
     public SpriteRenderer sprite;
+    public enemySpawning enemy;
 
     
     //Animation

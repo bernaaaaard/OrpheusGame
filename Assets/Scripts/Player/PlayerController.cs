@@ -16,7 +16,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject playerModelPivot;
     [SerializeField] GameObject shockEffect;
     [SerializeField] SpriteRenderer _spriteRenderer;
-
+    public AudioSource audioSource;
+    public GameObject playerSprite;
 
     CharacterController _characterController;
 
@@ -519,13 +520,15 @@ public class PlayerController : MonoBehaviour
 
         Debug.DrawRay(firingRay.origin, firingRay.direction * 100f, Color.darkRed);
 
+
+        
         
         
 
         if (_fireInput && _canFire)
         {
             // TODO: Add the damaging mechanic when firing and hitting a valid target
-
+            audioSource.Play();
             lineRenderer.SetPosition(0, firingRay.origin);
 
             StartCoroutine(FiringRoutine());
@@ -646,7 +649,15 @@ public class PlayerController : MonoBehaviour
 
     #region Other Functions (Lamentations and things)
 
-    
+    IEnumerator WalkCycle() 
+    {
+        if (playerSprite.GetComponent<SpriteRenderer>().sprite.name.Equals("1000005777_8")) 
+        {
+            playerSprite.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("1000005777_9");
+        }
+        
+        yield return new WaitForSeconds(0.3f);
+    }
 
     #endregion
 }

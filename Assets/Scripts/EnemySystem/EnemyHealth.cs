@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyHealth : MonoBehaviour, IDamageable
 {
@@ -30,7 +31,10 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     {
         isDead = true;
 
-        
+        if (gameObject.name == "Ceuthonymus(Clone)")
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
         EnemyAI ai = GetComponent<EnemyAI>();
         if (ai != null)
         {

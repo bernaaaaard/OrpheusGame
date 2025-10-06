@@ -6,6 +6,7 @@ public class enemySpawning : MonoBehaviour
     public GameObject shade;
     public GameObject ceuthynomus;
     public GameObject soul;
+    public int enemyCount;
 
      
     // Start is called once before the first execution of Update after the MonoBehaviour is created

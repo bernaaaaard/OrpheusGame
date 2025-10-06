@@ -45,5 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LamentationSystem
   allLamentations:
+  - {fileID: 11400000, guid: 1e9aaa663555235458b035aa43588cb0, type: 2}
+  - {fileID: 11400000, guid: 9165d38ef701bc1429ab2d4587b030be, type: 2}
+  - {fileID: 11400000, guid: 5203b78541b05354c9c9700c6a2b678d, type: 2}
   - {fileID: 11400000, guid: e84bfd45c2db9d243a2581221d36723c, type: 2}
+  - {fileID: 11400000, guid: 8a944a9ca838ed841850fff40cb34aff, type: 2}
   allLamentationEffects: []

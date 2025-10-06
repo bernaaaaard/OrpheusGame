@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
 
     public LamentationUIManager _lamentationUIManager;
 
+    public DialogueQueues dialogue;
+
     private void Awake()
     {
         _playerHealth = new UnitHealth(3, 3);

@@ -1,5 +1,5 @@
 Network
-ERR: 666/Failed to connect to the server
+ERR: 666/Failed to connect to the server	{I to progress dialogue}
 Network
 .
 Network
@@ -14,3 +14,31 @@ Network
 ....
 Network
 Connection Established
+Hecate
+The die is cast.
+Hrm35
+Careful, if you die server-side I'm not entirely sure that I can reboot your save.
+Hrm35
+You will be gone for good, dead.
+Orpheus
+I have already died once, I would die a thousand more-
+Hrm35
+Yeah, yeah to bring her back I've got it.
+Hrm35
+You certainly take risks.
+Orpheus
+threeFive, do you know anything about these admin bots?
+Hrm35
+Legacy or New-Age?
+Orpheus
+Just a moment, I'll get back to you
+Orpheus
+{Shift To Dodge}
+Hrm35
+Orpheus, hey, it's me again. I have that information you were looking for.
+Hrm35
+I'll go ahead and upload it to your readout.
+Hrm35
+{Left-Click to Blast}
+Hrm35
+Please. Try not to die.
