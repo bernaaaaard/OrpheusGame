@@ -30,7 +30,10 @@ public class WhipAttack : MonoBehaviour
         foreach (var hit in hits)
         {
             Debug.Log("Hit by Fury Whip!");
-           
+            if (hit.TryGetComponent<PlayerBehaviour>(out PlayerBehaviour player)) 
+            {
+                player.PlayerTakeDamage(1);
+            }
         }
 
         yield return new WaitForSeconds(duration);

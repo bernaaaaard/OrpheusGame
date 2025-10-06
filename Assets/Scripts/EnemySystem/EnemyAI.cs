@@ -11,6 +11,7 @@ public class EnemyAI : MonoBehaviour
     //private UnitHealth health;
     private MeleeAttack meleeAttack;
     private ProjectileAttack projectileAttack;
+    public SpriteRenderer sprite;
 
     
     //Animation
