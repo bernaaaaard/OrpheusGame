@@ -79,15 +79,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -763500919, guid: 1d6a1ffb857179844abfbebe11aa417d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.9007084, y: 5.23}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &7592391872342525983
@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 886718096504210099}
   - component: {fileID: 1666247103116126961}
   - component: {fileID: 7353797904355253786}
+  - component: {fileID: 7403849664841811822}
   m_Layer: 0
   m_Name: BaseEnemy
   m_TagString: Untagged
@@ -338,3 +339,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   maxHealth: 10
   currentHealth: 10
+--- !u!114 &7403849664841811822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7592391872342525983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b680e653f57a22408dd274218a65e7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DirectionalBillboarding
+  visualsTransform: {fileID: 8511310555934079345}
+  spriteRenderer: {fileID: 1936498868410187506}
+  frontSprite: {fileID: -763500919, guid: 1d6a1ffb857179844abfbebe11aa417d, type: 3}
+  backSprite: {fileID: -1688325565, guid: 1d6a1ffb857179844abfbebe11aa417d, type: 3}
