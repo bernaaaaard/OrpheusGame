@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        _playerHealth = new UnitHealth(3, 3);
         if (gameManager != null && gameManager != this)
         {
             Destroy(this);
