@@ -15,7 +15,7 @@ public class mainMenuButtons : MonoBehaviour
     {
         if (transform.name == "PlayButton") 
         {
-            SceneManager.LoadScene("GameplayScene");
+            SceneManager.LoadScene("Intro");
         }
         if (transform.name == "CreditsButton")
         {

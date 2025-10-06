@@ -14,8 +14,13 @@ public class PlayerController : MonoBehaviour
     [Header("References")]
 
     [SerializeField] GameObject playerModelPivot;
+    [SerializeField] GameObject shockEffect;
+    [SerializeField] SpriteRenderer _spriteRenderer;
+
 
     CharacterController _characterController;
+
+    
 
     //LamentationEffect _activeLamentation;
     LamentationSO _activeLamentation;
@@ -158,6 +163,7 @@ public class PlayerController : MonoBehaviour
     {
         _playerInputActions = new OrpheusControls();
         _characterController = GetComponent<CharacterController>();
+        shockEffect.SetActive(false);
     }
 
     private void OnEnable()
@@ -247,6 +253,16 @@ public class PlayerController : MonoBehaviour
             _currentSpeed += accelerationFactor * Time.deltaTime;
         }
 
+        if (_playerMovementInput.x < 0.0f)
+        {
+            _spriteRenderer.flipX = true;
+        }
+
+        else
+        {
+            _spriteRenderer.flipX = false;
+        }
+
         _currentSpeed = Mathf.Clamp(_currentSpeed, 0f, maxMovementSpeed);
 
         
@@ -259,6 +275,10 @@ public class PlayerController : MonoBehaviour
             _characterController.Move(transform.forward * maxDashSpeed * _playerMovementInput.magnitude * Time.deltaTime);
 
             return;
+        }
+        else 
+        {
+            
         }
 
         Vector3 moveDirection = transform.forward * _currentSpeed * _playerMovementInput.magnitude * Time.deltaTime + _velocity;
@@ -589,11 +609,37 @@ public class PlayerController : MonoBehaviour
     { 
         _canDash = false;
         _isDashing = true;
-        yield return new WaitForSeconds(dashLength);
+        if (_activeLamentation.Title == "Acceptance")
+        {
+            AcceptanceEffect.invuln = true;
+            Debug.Log("acceptance active");
+        }
+        if (_activeLamentation.Title == "Shock")
+        {
+            Debug.Log("activate shock");
+            yield return StartCoroutine(ShockAnimation(dashLength));
+        }
+        else
+        {
+            yield return new WaitForSeconds(dashLength);
+        }
+        AcceptanceEffect.invuln = false;
         _isDashing = false;
         yield return new WaitForSeconds(dashCooldownTimer);
         _canDash = true;
         
+    }
+
+    IEnumerator ShockAnimation(float dashLength) 
+    {
+        shockEffect.SetActive(true);
+        shockEffect.transform.localScale = new Vector3(1, 4, 1);
+        for (float i = 0; i < dashLength; i += dashLength / 20) 
+        {
+            shockEffect.transform.localScale += new Vector3(i  * 0.75f, (i * 4) * 0.75f, i * 0.75f);
+            yield return new WaitForSeconds(dashLength / 20);
+        }
+        shockEffect.SetActive(false);
     }
 
     #endregion
