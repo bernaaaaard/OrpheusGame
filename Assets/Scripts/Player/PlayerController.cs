@@ -14,8 +14,12 @@ public class PlayerController : MonoBehaviour
     [Header("References")]
 
     [SerializeField] GameObject playerModelPivot;
+    [SerializeField] SpriteRenderer _spriteRenderer;
+
 
     CharacterController _characterController;
+
+    
 
     //LamentationEffect _activeLamentation;
     LamentationSO _activeLamentation;
@@ -245,6 +249,16 @@ public class PlayerController : MonoBehaviour
         else if (_playerMovementInput != Vector3.zero && _currentSpeed < maxMovementSpeed)
         {
             _currentSpeed += accelerationFactor * Time.deltaTime;
+        }
+
+        if (_playerMovementInput.x < 0.0f)
+        {
+            _spriteRenderer.flipX = true;
+        }
+
+        else
+        {
+            _spriteRenderer.flipX = false;
         }
 
         _currentSpeed = Mathf.Clamp(_currentSpeed, 0f, maxMovementSpeed);

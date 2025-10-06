@@ -456,6 +456,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f41ba8845532ab342812ecbf98e531d5, type: 3}
+--- !u!212 &215799425 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3076388410869033949, guid: cea2f2f82590b1d44938e2e4808f7a8e, type: 3}
+  m_PrefabInstance: {fileID: 1481524676}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &388480718
 GameObject:
   m_ObjectHideFlags: 0
@@ -1451,6 +1456,10 @@ PrefabInstance:
       propertyPath: lineRenderer
       value: 
       objectReference: {fileID: 442832082}
+    - target: {fileID: 7408698469106397907, guid: 4fc704e2e87c88046b39080040127d42, type: 3}
+      propertyPath: _spriteRenderer
+      value: 
+      objectReference: {fileID: 215799425}
     - target: {fileID: 7408698469106397907, guid: 4fc704e2e87c88046b39080040127d42, type: 3}
       propertyPath: playerModelPivot
       value: 
