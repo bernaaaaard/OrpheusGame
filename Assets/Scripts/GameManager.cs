@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
     {
         if (_augmentUIManager && _lamentationUIManager.LamentationActivated)
         {
-            _augmentUIManager.ShowCards();
+            //_augmentUIManager.ShowCards();
         }
     }
 }
