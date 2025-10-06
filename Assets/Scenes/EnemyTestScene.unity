@@ -191,9 +191,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 711118114434863735, guid: 4cbd6bb8f3fa7a44cb2b2eeef34b0fa4, type: 3}
+      propertyPath: m_Size.x
+      value: 5.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 711118114434863735, guid: 4cbd6bb8f3fa7a44cb2b2eeef34b0fa4, type: 3}
+      propertyPath: m_Size.y
+      value: 6.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 711118114434863735, guid: 4cbd6bb8f3fa7a44cb2b2eeef34b0fa4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1517687805, guid: 16b73ce5b896a314ebed4e9990b0451f, type: 3}
+    - target: {fileID: 711118114434863735, guid: 4cbd6bb8f3fa7a44cb2b2eeef34b0fa4, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 886718096504210099, guid: 4cbd6bb8f3fa7a44cb2b2eeef34b0fa4, type: 3}
       propertyPath: m_StoppingDistance
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2182417745277502477, guid: 4cbd6bb8f3fa7a44cb2b2eeef34b0fa4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6455526948427955733, guid: 4cbd6bb8f3fa7a44cb2b2eeef34b0fa4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -201,7 +221,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6455526948427955733, guid: 4cbd6bb8f3fa7a44cb2b2eeef34b0fa4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.1
+      value: 1.56
       objectReference: {fileID: 0}
     - target: {fileID: 6455526948427955733, guid: 4cbd6bb8f3fa7a44cb2b2eeef34b0fa4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -241,7 +261,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7592391872342525983, guid: 4cbd6bb8f3fa7a44cb2b2eeef34b0fa4, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7614181562678415802, guid: 4cbd6bb8f3fa7a44cb2b2eeef34b0fa4, type: 3}
       propertyPath: sightRange
@@ -1027,7 +1047,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7633750147444409425, guid: c2853c61dd7f15b4d911405f5dcd40c5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9174644800781402827, guid: c2853c61dd7f15b4d911405f5dcd40c5, type: 3}
       propertyPath: m_IsTrigger
@@ -1047,6 +1067,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1936498868410187506, guid: f41ba8845532ab342812ecbf98e531d5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 6455526948427955733, guid: f41ba8845532ab342812ecbf98e531d5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.48
@@ -1097,7 +1121,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7592391872342525983, guid: f41ba8845532ab342812ecbf98e531d5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8511310555934079345, guid: f41ba8845532ab342812ecbf98e531d5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.26
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1119,6 +1147,10 @@ PrefabInstance:
     - target: {fileID: 297793387099081672, guid: 99701204d40875c478d2b2c0b098ab9f, type: 3}
       propertyPath: m_Name
       value: Ceuthonymus
+      objectReference: {fileID: 0}
+    - target: {fileID: 297793387099081672, guid: 99701204d40875c478d2b2c0b098ab9f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4220697060195845344, guid: 99701204d40875c478d2b2c0b098ab9f, type: 3}
       propertyPath: m_IsActive
